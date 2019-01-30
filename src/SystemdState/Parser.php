@@ -68,6 +68,8 @@ class Parser
             'Documentation',
             'BindsTo',
             'Triggers',
+            'Features',
+            'UnitPath'
         ])) {
             return explode(' ', $value);
         }

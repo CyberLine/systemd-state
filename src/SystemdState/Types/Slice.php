@@ -2,27 +2,9 @@
 
 namespace CyberLine\SystemdState\Types;
 
-class Slice implements \JsonSerializable
+class Slice extends AbstractType
 {
-    private $ActiveEnterTimestamp;
-
-    private $ActiveEnterTimestampMonotonic;
-
-    private $ActiveExitTimestampMonotonic;
-
-    private $ActiveState;
-
     private $After = [];
-
-    private $AllowIsolate;
-
-    private $AssertResult;
-
-    private $AssertTimestamp;
-
-    private $AssertTimestampMonotonic;
-
-    private $Before = [];
 
     private $BlockIOAccounting;
 
@@ -38,29 +20,11 @@ class Slice implements \JsonSerializable
 
     private $CPUWeight;
 
-    private $CanIsolate;
-
-    private $CanReload;
-
-    private $CanStart;
-
-    private $CanStop;
-
-    private $ConditionResult;
-
-    private $ConditionTimestamp;
-
-    private $ConditionTimestampMonotonic;
-
     private $Conflicts = [];
 
     private $ControlGroup;
 
-    private $DefaultDependencies;
-
     private $Delegate;
-
-    private $Description;
 
     private $DevicePolicy;
 
@@ -71,26 +35,6 @@ class Slice implements \JsonSerializable
     private $IOAccounting;
 
     private $IOWeight;
-
-    private $Id;
-
-    private $IgnoreOnIsolate;
-
-    private $InactiveEnterTimestampMonotonic;
-
-    private $InactiveExitTimestamp;
-
-    private $InactiveExitTimestampMonotonic;
-
-    private $InvocationID;
-
-    private $JobTimeoutAction;
-
-    private $JobTimeoutUSec;
-
-    private $LoadError;
-
-    private $LoadState;
 
     private $MemoryAccounting;
 
@@ -106,29 +50,11 @@ class Slice implements \JsonSerializable
 
     private $MemorySwapMax;
 
-    private $Names = [];
-
-    private $NeedDaemonReload;
-
-    private $OnFailureJobMode;
-
-    private $Perpetual;
-
-    private $RefuseManualStart;
-
-    private $RefuseManualStop;
-
     private $RequiredBy = [];
 
     private $Requires = [];
 
     private $Slice;
-
-    private $StartLimitAction;
-
-    private $StartLimitBurst;
-
-    private $StartLimitIntervalSec;
 
     private $StartupBlockIOWeight;
 
@@ -138,99 +64,17 @@ class Slice implements \JsonSerializable
 
     private $StartupIOWeight;
 
-    private $StateChangeTimestamp;
-
-    private $StateChangeTimestampMonotonic;
-
-    private $StopWhenUnneeded;
-
-    private $SubState;
-
     private $TasksAccounting;
 
     private $TasksCurrent;
 
     private $TasksMax;
 
-    private $Transient;
-
     private $UnitFilePreset;
 
     private $UnitFileState;
 
     private $WantedBy = [];
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestamp()
-    {
-        return $this->ActiveEnterTimestamp;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestamp
-     * @return Slice
-     */
-    public function setActiveEnterTimestamp($ActiveEnterTimestamp)
-    {
-        $this->ActiveEnterTimestamp = $ActiveEnterTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestampMonotonic()
-    {
-        return $this->ActiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestampMonotonic
-     * @return Slice
-     */
-    public function setActiveEnterTimestampMonotonic($ActiveEnterTimestampMonotonic)
-    {
-        $this->ActiveEnterTimestampMonotonic = $ActiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveExitTimestampMonotonic()
-    {
-        return $this->ActiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveExitTimestampMonotonic
-     * @return Slice
-     */
-    public function setActiveExitTimestampMonotonic($ActiveExitTimestampMonotonic)
-    {
-        $this->ActiveExitTimestampMonotonic = $ActiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveState()
-    {
-        return $this->ActiveState;
-    }
-
-    /**
-     * @param mixed $ActiveState
-     * @return Slice
-     */
-    public function setActiveState($ActiveState)
-    {
-        $this->ActiveState = $ActiveState;
-        return $this;
-    }
 
     /**
      * @return array
@@ -247,96 +91,6 @@ class Slice implements \JsonSerializable
     public function setAfter(array $After): Slice
     {
         $this->After = $After;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAllowIsolate()
-    {
-        return $this->AllowIsolate;
-    }
-
-    /**
-     * @param mixed $AllowIsolate
-     * @return Slice
-     */
-    public function setAllowIsolate($AllowIsolate)
-    {
-        $this->AllowIsolate = $AllowIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertResult()
-    {
-        return $this->AssertResult;
-    }
-
-    /**
-     * @param mixed $AssertResult
-     * @return Slice
-     */
-    public function setAssertResult($AssertResult)
-    {
-        $this->AssertResult = $AssertResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestamp()
-    {
-        return $this->AssertTimestamp;
-    }
-
-    /**
-     * @param mixed $AssertTimestamp
-     * @return Slice
-     */
-    public function setAssertTimestamp($AssertTimestamp)
-    {
-        $this->AssertTimestamp = $AssertTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestampMonotonic()
-    {
-        return $this->AssertTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $AssertTimestampMonotonic
-     * @return Slice
-     */
-    public function setAssertTimestampMonotonic($AssertTimestampMonotonic)
-    {
-        $this->AssertTimestampMonotonic = $AssertTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBefore(): array
-    {
-        return $this->Before;
-    }
-
-    /**
-     * @param array $Before
-     * @return Slice
-     */
-    public function setBefore(array $Before): Slice
-    {
-        $this->Before = $Before;
         return $this;
     }
 
@@ -467,132 +221,6 @@ class Slice implements \JsonSerializable
     }
 
     /**
-     * @return mixed
-     */
-    public function getCanIsolate()
-    {
-        return $this->CanIsolate;
-    }
-
-    /**
-     * @param mixed $CanIsolate
-     * @return Slice
-     */
-    public function setCanIsolate($CanIsolate)
-    {
-        $this->CanIsolate = $CanIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanReload()
-    {
-        return $this->CanReload;
-    }
-
-    /**
-     * @param mixed $CanReload
-     * @return Slice
-     */
-    public function setCanReload($CanReload)
-    {
-        $this->CanReload = $CanReload;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStart()
-    {
-        return $this->CanStart;
-    }
-
-    /**
-     * @param mixed $CanStart
-     * @return Slice
-     */
-    public function setCanStart($CanStart)
-    {
-        $this->CanStart = $CanStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStop()
-    {
-        return $this->CanStop;
-    }
-
-    /**
-     * @param mixed $CanStop
-     * @return Slice
-     */
-    public function setCanStop($CanStop)
-    {
-        $this->CanStop = $CanStop;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionResult()
-    {
-        return $this->ConditionResult;
-    }
-
-    /**
-     * @param mixed $ConditionResult
-     * @return Slice
-     */
-    public function setConditionResult($ConditionResult)
-    {
-        $this->ConditionResult = $ConditionResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestamp()
-    {
-        return $this->ConditionTimestamp;
-    }
-
-    /**
-     * @param mixed $ConditionTimestamp
-     * @return Slice
-     */
-    public function setConditionTimestamp($ConditionTimestamp)
-    {
-        $this->ConditionTimestamp = $ConditionTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestampMonotonic()
-    {
-        return $this->ConditionTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ConditionTimestampMonotonic
-     * @return Slice
-     */
-    public function setConditionTimestampMonotonic($ConditionTimestampMonotonic)
-    {
-        $this->ConditionTimestampMonotonic = $ConditionTimestampMonotonic;
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getConflicts(): array
@@ -631,24 +259,6 @@ class Slice implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getDefaultDependencies()
-    {
-        return $this->DefaultDependencies;
-    }
-
-    /**
-     * @param mixed $DefaultDependencies
-     * @return Slice
-     */
-    public function setDefaultDependencies($DefaultDependencies)
-    {
-        $this->DefaultDependencies = $DefaultDependencies;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDelegate()
     {
         return $this->Delegate;
@@ -661,24 +271,6 @@ class Slice implements \JsonSerializable
     public function setDelegate($Delegate)
     {
         $this->Delegate = $Delegate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->Description;
-    }
-
-    /**
-     * @param mixed $Description
-     * @return Slice
-     */
-    public function setDescription($Description)
-    {
-        $this->Description = $Description;
         return $this;
     }
 
@@ -769,186 +361,6 @@ class Slice implements \JsonSerializable
     public function setIOWeight($IOWeight)
     {
         $this->IOWeight = $IOWeight;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->Id;
-    }
-
-    /**
-     * @param mixed $Id
-     * @return Slice
-     */
-    public function setId($Id)
-    {
-        $this->Id = $Id;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIgnoreOnIsolate()
-    {
-        return $this->IgnoreOnIsolate;
-    }
-
-    /**
-     * @param mixed $IgnoreOnIsolate
-     * @return Slice
-     */
-    public function setIgnoreOnIsolate($IgnoreOnIsolate)
-    {
-        $this->IgnoreOnIsolate = $IgnoreOnIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveEnterTimestampMonotonic()
-    {
-        return $this->InactiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveEnterTimestampMonotonic
-     * @return Slice
-     */
-    public function setInactiveEnterTimestampMonotonic($InactiveEnterTimestampMonotonic)
-    {
-        $this->InactiveEnterTimestampMonotonic = $InactiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestamp()
-    {
-        return $this->InactiveExitTimestamp;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestamp
-     * @return Slice
-     */
-    public function setInactiveExitTimestamp($InactiveExitTimestamp)
-    {
-        $this->InactiveExitTimestamp = $InactiveExitTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestampMonotonic()
-    {
-        return $this->InactiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestampMonotonic
-     * @return Slice
-     */
-    public function setInactiveExitTimestampMonotonic($InactiveExitTimestampMonotonic)
-    {
-        $this->InactiveExitTimestampMonotonic = $InactiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInvocationID()
-    {
-        return $this->InvocationID;
-    }
-
-    /**
-     * @param mixed $InvocationID
-     * @return Slice
-     */
-    public function setInvocationID($InvocationID)
-    {
-        $this->InvocationID = $InvocationID;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutAction()
-    {
-        return $this->JobTimeoutAction;
-    }
-
-    /**
-     * @param mixed $JobTimeoutAction
-     * @return Slice
-     */
-    public function setJobTimeoutAction($JobTimeoutAction)
-    {
-        $this->JobTimeoutAction = $JobTimeoutAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutUSec()
-    {
-        return $this->JobTimeoutUSec;
-    }
-
-    /**
-     * @param mixed $JobTimeoutUSec
-     * @return Slice
-     */
-    public function setJobTimeoutUSec($JobTimeoutUSec)
-    {
-        $this->JobTimeoutUSec = $JobTimeoutUSec;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLoadError()
-    {
-        return $this->LoadError;
-    }
-
-    /**
-     * @param mixed $LoadError
-     * @return Slice
-     */
-    public function setLoadError($LoadError)
-    {
-        $this->LoadError = $LoadError;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLoadState()
-    {
-        return $this->LoadState;
-    }
-
-    /**
-     * @param mixed $LoadState
-     * @return Slice
-     */
-    public function setLoadState($LoadState)
-    {
-        $this->LoadState = $LoadState;
         return $this;
     }
 
@@ -1081,114 +493,6 @@ class Slice implements \JsonSerializable
     /**
      * @return array
      */
-    public function getNames(): array
-    {
-        return $this->Names;
-    }
-
-    /**
-     * @param array $Names
-     * @return Slice
-     */
-    public function setNames(array $Names): Slice
-    {
-        $this->Names = $Names;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNeedDaemonReload()
-    {
-        return $this->NeedDaemonReload;
-    }
-
-    /**
-     * @param mixed $NeedDaemonReload
-     * @return Slice
-     */
-    public function setNeedDaemonReload($NeedDaemonReload)
-    {
-        $this->NeedDaemonReload = $NeedDaemonReload;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOnFailureJobMode()
-    {
-        return $this->OnFailureJobMode;
-    }
-
-    /**
-     * @param mixed $OnFailureJobMode
-     * @return Slice
-     */
-    public function setOnFailureJobMode($OnFailureJobMode)
-    {
-        $this->OnFailureJobMode = $OnFailureJobMode;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerpetual()
-    {
-        return $this->Perpetual;
-    }
-
-    /**
-     * @param mixed $Perpetual
-     * @return Slice
-     */
-    public function setPerpetual($Perpetual)
-    {
-        $this->Perpetual = $Perpetual;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStart()
-    {
-        return $this->RefuseManualStart;
-    }
-
-    /**
-     * @param mixed $RefuseManualStart
-     * @return Slice
-     */
-    public function setRefuseManualStart($RefuseManualStart)
-    {
-        $this->RefuseManualStart = $RefuseManualStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStop()
-    {
-        return $this->RefuseManualStop;
-    }
-
-    /**
-     * @param mixed $RefuseManualStop
-     * @return Slice
-     */
-    public function setRefuseManualStop($RefuseManualStop)
-    {
-        $this->RefuseManualStop = $RefuseManualStop;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
     public function getRequiredBy(): array
     {
         return $this->RequiredBy;
@@ -1237,60 +541,6 @@ class Slice implements \JsonSerializable
     public function setSlice($Slice)
     {
         $this->Slice = $Slice;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitAction()
-    {
-        return $this->StartLimitAction;
-    }
-
-    /**
-     * @param mixed $StartLimitAction
-     * @return Slice
-     */
-    public function setStartLimitAction($StartLimitAction)
-    {
-        $this->StartLimitAction = $StartLimitAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitBurst()
-    {
-        return $this->StartLimitBurst;
-    }
-
-    /**
-     * @param mixed $StartLimitBurst
-     * @return Slice
-     */
-    public function setStartLimitBurst($StartLimitBurst)
-    {
-        $this->StartLimitBurst = $StartLimitBurst;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitIntervalSec()
-    {
-        return $this->StartLimitIntervalSec;
-    }
-
-    /**
-     * @param mixed $StartLimitIntervalSec
-     * @return Slice
-     */
-    public function setStartLimitIntervalSec($StartLimitIntervalSec)
-    {
-        $this->StartLimitIntervalSec = $StartLimitIntervalSec;
         return $this;
     }
 
@@ -1369,78 +619,6 @@ class Slice implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getStateChangeTimestamp()
-    {
-        return $this->StateChangeTimestamp;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestamp
-     * @return Slice
-     */
-    public function setStateChangeTimestamp($StateChangeTimestamp)
-    {
-        $this->StateChangeTimestamp = $StateChangeTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestampMonotonic()
-    {
-        return $this->StateChangeTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestampMonotonic
-     * @return Slice
-     */
-    public function setStateChangeTimestampMonotonic($StateChangeTimestampMonotonic)
-    {
-        $this->StateChangeTimestampMonotonic = $StateChangeTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStopWhenUnneeded()
-    {
-        return $this->StopWhenUnneeded;
-    }
-
-    /**
-     * @param mixed $StopWhenUnneeded
-     * @return Slice
-     */
-    public function setStopWhenUnneeded($StopWhenUnneeded)
-    {
-        $this->StopWhenUnneeded = $StopWhenUnneeded;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSubState()
-    {
-        return $this->SubState;
-    }
-
-    /**
-     * @param mixed $SubState
-     * @return Slice
-     */
-    public function setSubState($SubState)
-    {
-        $this->SubState = $SubState;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTasksAccounting()
     {
         return $this->TasksAccounting;
@@ -1489,24 +667,6 @@ class Slice implements \JsonSerializable
     public function setTasksMax($TasksMax)
     {
         $this->TasksMax = $TasksMax;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTransient()
-    {
-        return $this->Transient;
-    }
-
-    /**
-     * @param mixed $Transient
-     * @return Slice
-     */
-    public function setTransient($Transient)
-    {
-        $this->Transient = $Transient;
         return $this;
     }
 
@@ -1562,10 +722,5 @@ class Slice implements \JsonSerializable
     {
         $this->WantedBy = $WantedBy;
         return $this;
-    }
-
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }

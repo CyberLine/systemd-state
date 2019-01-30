@@ -65,7 +65,7 @@
             <arg value="${basedir}/build/logs/phploc.csv" />
             <arg value="--log-xml" />
             <arg path="${basedir}/build/logs/phploc.xml" />
-            <arg path="${basedir}/include" />
+            <arg path="${basedir}/src/SystemdState" />
         </exec>
     </target>
 

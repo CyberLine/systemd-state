@@ -2,29 +2,11 @@
 
 namespace CyberLine\SystemdState\Types;
 
-class Swap implements \JsonSerializable
+class Swap extends AbstractType
 {
-    private $ActiveEnterTimestamp;
-
-    private $ActiveEnterTimestampMonotonic;
-
-    private $ActiveExitTimestampMonotonic;
-
-    private $ActiveState;
-
     private $After = [];
 
-    private $AllowIsolate;
-
     private $AmbientCapabilities;
-
-    private $AssertResult;
-
-    private $AssertTimestamp;
-
-    private $AssertTimestampMonotonic;
-
-    private $Before = [];
 
     private $BindsTo = [];
 
@@ -48,21 +30,7 @@ class Swap implements \JsonSerializable
 
     private $CPUWeight;
 
-    private $CanIsolate;
-
-    private $CanReload;
-
-    private $CanStart;
-
-    private $CanStop;
-
     private $CapabilityBoundingSet;
-
-    private $ConditionResult;
-
-    private $ConditionTimestamp;
-
-    private $ConditionTimestampMonotonic;
 
     private $Conflicts = [];
 
@@ -70,11 +38,7 @@ class Swap implements \JsonSerializable
 
     private $ControlPID;
 
-    private $DefaultDependencies;
-
     private $Delegate;
-
-    private $Description;
 
     private $DevicePolicy;
 
@@ -92,23 +56,7 @@ class Swap implements \JsonSerializable
 
     private $IOWeight;
 
-    private $Id;
-
-    private $IgnoreOnIsolate;
-
     private $IgnoreSIGPIPE;
-
-    private $InactiveEnterTimestampMonotonic;
-
-    private $InactiveExitTimestamp;
-
-    private $InactiveExitTimestampMonotonic;
-
-    private $InvocationID;
-
-    private $JobTimeoutAction;
-
-    private $JobTimeoutUSec;
 
     private $KillMode;
 
@@ -178,10 +126,6 @@ class Swap implements \JsonSerializable
 
     private $LimitSTACKSoft;
 
-    private $LoadError;
-
-    private $LoadState;
-
     private $MemoryAccounting;
 
     private $MemoryCurrent;
@@ -200,10 +144,6 @@ class Swap implements \JsonSerializable
 
     private $MountFlags;
 
-    private $Names = [];
-
-    private $NeedDaemonReload;
-
     private $Nice;
 
     private $NoNewPrivileges;
@@ -212,11 +152,7 @@ class Swap implements \JsonSerializable
 
     private $OOMScoreAdjust;
 
-    private $OnFailureJobMode;
-
     private $Options;
-
-    private $Perpetual;
 
     private $Priority;
 
@@ -237,10 +173,6 @@ class Swap implements \JsonSerializable
     private $ProtectKernelTunables;
 
     private $ProtectSystem;
-
-    private $RefuseManualStart;
-
-    private $RefuseManualStop;
 
     private $RemoveIPC;
 
@@ -276,12 +208,6 @@ class Swap implements \JsonSerializable
 
     private $StandardOutput;
 
-    private $StartLimitAction;
-
-    private $StartLimitBurst;
-
-    private $StartLimitIntervalSec;
-
     private $StartupBlockIOWeight;
 
     private $StartupCPUShares;
@@ -289,14 +215,6 @@ class Swap implements \JsonSerializable
     private $StartupCPUWeight;
 
     private $StartupIOWeight;
-
-    private $StateChangeTimestamp;
-
-    private $StateChangeTimestampMonotonic;
-
-    private $StopWhenUnneeded;
-
-    private $SubState;
 
     private $SyslogFacility;
 
@@ -324,8 +242,6 @@ class Swap implements \JsonSerializable
 
     private $TimerSlackNSec;
 
-    private $Transient;
-
     private $UID;
 
     private $UMask;
@@ -339,78 +255,6 @@ class Swap implements \JsonSerializable
     private $WantedBy = [];
 
     private $What;
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestamp()
-    {
-        return $this->ActiveEnterTimestamp;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestamp
-     * @return Swap
-     */
-    public function setActiveEnterTimestamp($ActiveEnterTimestamp)
-    {
-        $this->ActiveEnterTimestamp = $ActiveEnterTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestampMonotonic()
-    {
-        return $this->ActiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestampMonotonic
-     * @return Swap
-     */
-    public function setActiveEnterTimestampMonotonic($ActiveEnterTimestampMonotonic)
-    {
-        $this->ActiveEnterTimestampMonotonic = $ActiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveExitTimestampMonotonic()
-    {
-        return $this->ActiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveExitTimestampMonotonic
-     * @return Swap
-     */
-    public function setActiveExitTimestampMonotonic($ActiveExitTimestampMonotonic)
-    {
-        $this->ActiveExitTimestampMonotonic = $ActiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveState()
-    {
-        return $this->ActiveState;
-    }
-
-    /**
-     * @param mixed $ActiveState
-     * @return Swap
-     */
-    public function setActiveState($ActiveState)
-    {
-        $this->ActiveState = $ActiveState;
-        return $this;
-    }
 
     /**
      * @return array
@@ -433,24 +277,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getAllowIsolate()
-    {
-        return $this->AllowIsolate;
-    }
-
-    /**
-     * @param mixed $AllowIsolate
-     * @return Swap
-     */
-    public function setAllowIsolate($AllowIsolate)
-    {
-        $this->AllowIsolate = $AllowIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getAmbientCapabilities()
     {
         return $this->AmbientCapabilities;
@@ -463,78 +289,6 @@ class Swap implements \JsonSerializable
     public function setAmbientCapabilities($AmbientCapabilities)
     {
         $this->AmbientCapabilities = $AmbientCapabilities;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertResult()
-    {
-        return $this->AssertResult;
-    }
-
-    /**
-     * @param mixed $AssertResult
-     * @return Swap
-     */
-    public function setAssertResult($AssertResult)
-    {
-        $this->AssertResult = $AssertResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestamp()
-    {
-        return $this->AssertTimestamp;
-    }
-
-    /**
-     * @param mixed $AssertTimestamp
-     * @return Swap
-     */
-    public function setAssertTimestamp($AssertTimestamp)
-    {
-        $this->AssertTimestamp = $AssertTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestampMonotonic()
-    {
-        return $this->AssertTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $AssertTimestampMonotonic
-     * @return Swap
-     */
-    public function setAssertTimestampMonotonic($AssertTimestampMonotonic)
-    {
-        $this->AssertTimestampMonotonic = $AssertTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBefore(): array
-    {
-        return $this->Before;
-    }
-
-    /**
-     * @param array $Before
-     * @return Swap
-     */
-    public function setBefore(array $Before): Swap
-    {
-        $this->Before = $Before;
         return $this;
     }
 
@@ -739,78 +493,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getCanIsolate()
-    {
-        return $this->CanIsolate;
-    }
-
-    /**
-     * @param mixed $CanIsolate
-     * @return Swap
-     */
-    public function setCanIsolate($CanIsolate)
-    {
-        $this->CanIsolate = $CanIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanReload()
-    {
-        return $this->CanReload;
-    }
-
-    /**
-     * @param mixed $CanReload
-     * @return Swap
-     */
-    public function setCanReload($CanReload)
-    {
-        $this->CanReload = $CanReload;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStart()
-    {
-        return $this->CanStart;
-    }
-
-    /**
-     * @param mixed $CanStart
-     * @return Swap
-     */
-    public function setCanStart($CanStart)
-    {
-        $this->CanStart = $CanStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStop()
-    {
-        return $this->CanStop;
-    }
-
-    /**
-     * @param mixed $CanStop
-     * @return Swap
-     */
-    public function setCanStop($CanStop)
-    {
-        $this->CanStop = $CanStop;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCapabilityBoundingSet()
     {
         return $this->CapabilityBoundingSet;
@@ -823,60 +505,6 @@ class Swap implements \JsonSerializable
     public function setCapabilityBoundingSet($CapabilityBoundingSet)
     {
         $this->CapabilityBoundingSet = $CapabilityBoundingSet;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionResult()
-    {
-        return $this->ConditionResult;
-    }
-
-    /**
-     * @param mixed $ConditionResult
-     * @return Swap
-     */
-    public function setConditionResult($ConditionResult)
-    {
-        $this->ConditionResult = $ConditionResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestamp()
-    {
-        return $this->ConditionTimestamp;
-    }
-
-    /**
-     * @param mixed $ConditionTimestamp
-     * @return Swap
-     */
-    public function setConditionTimestamp($ConditionTimestamp)
-    {
-        $this->ConditionTimestamp = $ConditionTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestampMonotonic()
-    {
-        return $this->ConditionTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ConditionTimestampMonotonic
-     * @return Swap
-     */
-    public function setConditionTimestampMonotonic($ConditionTimestampMonotonic)
-    {
-        $this->ConditionTimestampMonotonic = $ConditionTimestampMonotonic;
         return $this;
     }
 
@@ -937,24 +565,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getDefaultDependencies()
-    {
-        return $this->DefaultDependencies;
-    }
-
-    /**
-     * @param mixed $DefaultDependencies
-     * @return Swap
-     */
-    public function setDefaultDependencies($DefaultDependencies)
-    {
-        $this->DefaultDependencies = $DefaultDependencies;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDelegate()
     {
         return $this->Delegate;
@@ -967,24 +577,6 @@ class Swap implements \JsonSerializable
     public function setDelegate($Delegate)
     {
         $this->Delegate = $Delegate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->Description;
-    }
-
-    /**
-     * @param mixed $Description
-     * @return Swap
-     */
-    public function setDescription($Description)
-    {
-        $this->Description = $Description;
         return $this;
     }
 
@@ -1135,42 +727,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->Id;
-    }
-
-    /**
-     * @param mixed $Id
-     * @return Swap
-     */
-    public function setId($Id)
-    {
-        $this->Id = $Id;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIgnoreOnIsolate()
-    {
-        return $this->IgnoreOnIsolate;
-    }
-
-    /**
-     * @param mixed $IgnoreOnIsolate
-     * @return Swap
-     */
-    public function setIgnoreOnIsolate($IgnoreOnIsolate)
-    {
-        $this->IgnoreOnIsolate = $IgnoreOnIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getIgnoreSIGPIPE()
     {
         return $this->IgnoreSIGPIPE;
@@ -1183,114 +739,6 @@ class Swap implements \JsonSerializable
     public function setIgnoreSIGPIPE($IgnoreSIGPIPE)
     {
         $this->IgnoreSIGPIPE = $IgnoreSIGPIPE;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveEnterTimestampMonotonic()
-    {
-        return $this->InactiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveEnterTimestampMonotonic
-     * @return Swap
-     */
-    public function setInactiveEnterTimestampMonotonic($InactiveEnterTimestampMonotonic)
-    {
-        $this->InactiveEnterTimestampMonotonic = $InactiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestamp()
-    {
-        return $this->InactiveExitTimestamp;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestamp
-     * @return Swap
-     */
-    public function setInactiveExitTimestamp($InactiveExitTimestamp)
-    {
-        $this->InactiveExitTimestamp = $InactiveExitTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestampMonotonic()
-    {
-        return $this->InactiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestampMonotonic
-     * @return Swap
-     */
-    public function setInactiveExitTimestampMonotonic($InactiveExitTimestampMonotonic)
-    {
-        $this->InactiveExitTimestampMonotonic = $InactiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInvocationID()
-    {
-        return $this->InvocationID;
-    }
-
-    /**
-     * @param mixed $InvocationID
-     * @return Swap
-     */
-    public function setInvocationID($InvocationID)
-    {
-        $this->InvocationID = $InvocationID;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutAction()
-    {
-        return $this->JobTimeoutAction;
-    }
-
-    /**
-     * @param mixed $JobTimeoutAction
-     * @return Swap
-     */
-    public function setJobTimeoutAction($JobTimeoutAction)
-    {
-        $this->JobTimeoutAction = $JobTimeoutAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutUSec()
-    {
-        return $this->JobTimeoutUSec;
-    }
-
-    /**
-     * @param mixed $JobTimeoutUSec
-     * @return Swap
-     */
-    public function setJobTimeoutUSec($JobTimeoutUSec)
-    {
-        $this->JobTimeoutUSec = $JobTimeoutUSec;
         return $this;
     }
 
@@ -1909,42 +1357,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getLoadError()
-    {
-        return $this->LoadError;
-    }
-
-    /**
-     * @param mixed $LoadError
-     * @return Swap
-     */
-    public function setLoadError($LoadError)
-    {
-        $this->LoadError = $LoadError;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLoadState()
-    {
-        return $this->LoadState;
-    }
-
-    /**
-     * @param mixed $LoadState
-     * @return Swap
-     */
-    public function setLoadState($LoadState)
-    {
-        $this->LoadState = $LoadState;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMemoryAccounting()
     {
         return $this->MemoryAccounting;
@@ -2105,42 +1517,6 @@ class Swap implements \JsonSerializable
     }
 
     /**
-     * @return array
-     */
-    public function getNames(): array
-    {
-        return $this->Names;
-    }
-
-    /**
-     * @param array $Names
-     * @return Swap
-     */
-    public function setNames(array $Names): Swap
-    {
-        $this->Names = $Names;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNeedDaemonReload()
-    {
-        return $this->NeedDaemonReload;
-    }
-
-    /**
-     * @param mixed $NeedDaemonReload
-     * @return Swap
-     */
-    public function setNeedDaemonReload($NeedDaemonReload)
-    {
-        $this->NeedDaemonReload = $NeedDaemonReload;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getNice()
@@ -2215,24 +1591,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getOnFailureJobMode()
-    {
-        return $this->OnFailureJobMode;
-    }
-
-    /**
-     * @param mixed $OnFailureJobMode
-     * @return Swap
-     */
-    public function setOnFailureJobMode($OnFailureJobMode)
-    {
-        $this->OnFailureJobMode = $OnFailureJobMode;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getOptions()
     {
         return $this->Options;
@@ -2245,24 +1603,6 @@ class Swap implements \JsonSerializable
     public function setOptions($Options)
     {
         $this->Options = $Options;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerpetual()
-    {
-        return $this->Perpetual;
-    }
-
-    /**
-     * @param mixed $Perpetual
-     * @return Swap
-     */
-    public function setPerpetual($Perpetual)
-    {
-        $this->Perpetual = $Perpetual;
         return $this;
     }
 
@@ -2443,42 +1783,6 @@ class Swap implements \JsonSerializable
     public function setProtectSystem($ProtectSystem)
     {
         $this->ProtectSystem = $ProtectSystem;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStart()
-    {
-        return $this->RefuseManualStart;
-    }
-
-    /**
-     * @param mixed $RefuseManualStart
-     * @return Swap
-     */
-    public function setRefuseManualStart($RefuseManualStart)
-    {
-        $this->RefuseManualStart = $RefuseManualStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStop()
-    {
-        return $this->RefuseManualStop;
-    }
-
-    /**
-     * @param mixed $RefuseManualStop
-     * @return Swap
-     */
-    public function setRefuseManualStop($RefuseManualStop)
-    {
-        $this->RefuseManualStop = $RefuseManualStop;
         return $this;
     }
 
@@ -2791,60 +2095,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getStartLimitAction()
-    {
-        return $this->StartLimitAction;
-    }
-
-    /**
-     * @param mixed $StartLimitAction
-     * @return Swap
-     */
-    public function setStartLimitAction($StartLimitAction)
-    {
-        $this->StartLimitAction = $StartLimitAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitBurst()
-    {
-        return $this->StartLimitBurst;
-    }
-
-    /**
-     * @param mixed $StartLimitBurst
-     * @return Swap
-     */
-    public function setStartLimitBurst($StartLimitBurst)
-    {
-        $this->StartLimitBurst = $StartLimitBurst;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitIntervalSec()
-    {
-        return $this->StartLimitIntervalSec;
-    }
-
-    /**
-     * @param mixed $StartLimitIntervalSec
-     * @return Swap
-     */
-    public function setStartLimitIntervalSec($StartLimitIntervalSec)
-    {
-        $this->StartLimitIntervalSec = $StartLimitIntervalSec;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStartupBlockIOWeight()
     {
         return $this->StartupBlockIOWeight;
@@ -2911,78 +2161,6 @@ class Swap implements \JsonSerializable
     public function setStartupIOWeight($StartupIOWeight)
     {
         $this->StartupIOWeight = $StartupIOWeight;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestamp()
-    {
-        return $this->StateChangeTimestamp;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestamp
-     * @return Swap
-     */
-    public function setStateChangeTimestamp($StateChangeTimestamp)
-    {
-        $this->StateChangeTimestamp = $StateChangeTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestampMonotonic()
-    {
-        return $this->StateChangeTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestampMonotonic
-     * @return Swap
-     */
-    public function setStateChangeTimestampMonotonic($StateChangeTimestampMonotonic)
-    {
-        $this->StateChangeTimestampMonotonic = $StateChangeTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStopWhenUnneeded()
-    {
-        return $this->StopWhenUnneeded;
-    }
-
-    /**
-     * @param mixed $StopWhenUnneeded
-     * @return Swap
-     */
-    public function setStopWhenUnneeded($StopWhenUnneeded)
-    {
-        $this->StopWhenUnneeded = $StopWhenUnneeded;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSubState()
-    {
-        return $this->SubState;
-    }
-
-    /**
-     * @param mixed $SubState
-     * @return Swap
-     */
-    public function setSubState($SubState)
-    {
-        $this->SubState = $SubState;
         return $this;
     }
 
@@ -3223,24 +2401,6 @@ class Swap implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getTransient()
-    {
-        return $this->Transient;
-    }
-
-    /**
-     * @param mixed $Transient
-     * @return Swap
-     */
-    public function setTransient($Transient)
-    {
-        $this->Transient = $Transient;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getUID()
     {
         return $this->UID;
@@ -3362,10 +2522,5 @@ class Swap implements \JsonSerializable
     {
         $this->What = $What;
         return $this;
-    }
-
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }

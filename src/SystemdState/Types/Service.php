@@ -2,31 +2,13 @@
 
 namespace CyberLine\SystemdState\Types;
 
-class Service implements \JsonSerializable
+class Service extends AbstractType
 {
-    private $ActiveEnterTimestamp;
-
-    private $ActiveEnterTimestampMonotonic;
-
     private $ActiveExitTimestamp;
-
-    private $ActiveExitTimestampMonotonic;
-
-    private $ActiveState;
 
     private $After = [];
 
-    private $AllowIsolate;
-
     private $AmbientCapabilities;
-
-    private $AssertResult;
-
-    private $AssertTimestamp;
-
-    private $AssertTimestampMonotonic;
-
-    private $Before = [];
 
     private $BindsTo = [];
 
@@ -52,21 +34,7 @@ class Service implements \JsonSerializable
 
     private $CPUWeight;
 
-    private $CanIsolate;
-
-    private $CanReload;
-
-    private $CanStart;
-
-    private $CanStop;
-
     private $CapabilityBoundingSet;
-
-    private $ConditionResult;
-
-    private $ConditionTimestamp;
-
-    private $ConditionTimestampMonotonic;
 
     private $Conflicts = [];
 
@@ -76,11 +44,7 @@ class Service implements \JsonSerializable
 
     private $ControlPID;
 
-    private $DefaultDependencies;
-
     private $Delegate;
-
-    private $Description;
 
     private $DevicePolicy;
 
@@ -138,25 +102,9 @@ class Service implements \JsonSerializable
 
     private $IOWeight;
 
-    private $Id;
-
-    private $IgnoreOnIsolate;
-
     private $IgnoreSIGPIPE;
 
     private $InactiveEnterTimestamp;
-
-    private $InactiveEnterTimestampMonotonic;
-
-    private $InactiveExitTimestamp;
-
-    private $InactiveExitTimestampMonotonic;
-
-    private $InvocationID;
-
-    private $JobTimeoutAction;
-
-    private $JobTimeoutUSec;
 
     private $KillMode;
 
@@ -226,10 +174,6 @@ class Service implements \JsonSerializable
 
     private $LimitSTACKSoft;
 
-    private $LoadError;
-
-    private $LoadState;
-
     private $MainPID;
 
     private $MemoryAccounting;
@@ -252,10 +196,6 @@ class Service implements \JsonSerializable
 
     private $NFileDescriptorStore;
 
-    private $Names = [];
-
-    private $NeedDaemonReload;
-
     private $Nice;
 
     private $NoNewPrivileges;
@@ -266,8 +206,6 @@ class Service implements \JsonSerializable
 
     private $OOMScoreAdjust;
 
-    private $OnFailureJobMode;
-
     private $PAMName;
 
     private $PartOf;
@@ -275,8 +213,6 @@ class Service implements \JsonSerializable
     private $PIDFile;
 
     private $PermissionsStartOnly;
-
-    private $Perpetual;
 
     private $PrivateDevices;
 
@@ -301,10 +237,6 @@ class Service implements \JsonSerializable
     private $ReadOnlyPaths = [];
 
     private $ReadWritePaths = [];
-
-    private $RefuseManualStart;
-
-    private $RefuseManualStop;
 
     private $ReloadPropagatedFrom;
 
@@ -356,12 +288,6 @@ class Service implements \JsonSerializable
 
     private $StandardOutput;
 
-    private $StartLimitAction;
-
-    private $StartLimitBurst;
-
-    private $StartLimitIntervalSec;
-
     private $StartupBlockIOWeight;
 
     private $StartupCPUShares;
@@ -370,17 +296,9 @@ class Service implements \JsonSerializable
 
     private $StartupIOWeight;
 
-    private $StateChangeTimestamp;
-
-    private $StateChangeTimestampMonotonic;
-
     private $StatusText;
 
     private $StatusErrno;
-
-    private $StopWhenUnneeded;
-
-    private $SubState;
 
     private $SyslogFacility;
 
@@ -416,8 +334,6 @@ class Service implements \JsonSerializable
 
     private $TimerSlackNSec;
 
-    private $Transient;
-
     private $TriggeredBy;
 
     private $Type;
@@ -451,42 +367,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getActiveEnterTimestamp()
-    {
-        return $this->ActiveEnterTimestamp;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestamp
-     * @return Service
-     */
-    public function setActiveEnterTimestamp($ActiveEnterTimestamp)
-    {
-        $this->ActiveEnterTimestamp = $ActiveEnterTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestampMonotonic()
-    {
-        return $this->ActiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestampMonotonic
-     * @return Service
-     */
-    public function setActiveEnterTimestampMonotonic($ActiveEnterTimestampMonotonic)
-    {
-        $this->ActiveEnterTimestampMonotonic = $ActiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getActiveExitTimestamp()
     {
         return $this->ActiveExitTimestamp;
@@ -499,42 +379,6 @@ class Service implements \JsonSerializable
     public function setActiveExitTimestamp($ActiveExitTimestamp)
     {
         $this->ActiveExitTimestamp = $ActiveExitTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveExitTimestampMonotonic()
-    {
-        return $this->ActiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveExitTimestampMonotonic
-     * @return Service
-     */
-    public function setActiveExitTimestampMonotonic($ActiveExitTimestampMonotonic)
-    {
-        $this->ActiveExitTimestampMonotonic = $ActiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveState()
-    {
-        return $this->ActiveState;
-    }
-
-    /**
-     * @param mixed $ActiveState
-     * @return Service
-     */
-    public function setActiveState($ActiveState)
-    {
-        $this->ActiveState = $ActiveState;
         return $this;
     }
 
@@ -559,24 +403,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getAllowIsolate()
-    {
-        return $this->AllowIsolate;
-    }
-
-    /**
-     * @param mixed $AllowIsolate
-     * @return Service
-     */
-    public function setAllowIsolate($AllowIsolate)
-    {
-        $this->AllowIsolate = $AllowIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getAmbientCapabilities()
     {
         return $this->AmbientCapabilities;
@@ -589,78 +415,6 @@ class Service implements \JsonSerializable
     public function setAmbientCapabilities($AmbientCapabilities)
     {
         $this->AmbientCapabilities = $AmbientCapabilities;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertResult()
-    {
-        return $this->AssertResult;
-    }
-
-    /**
-     * @param mixed $AssertResult
-     * @return Service
-     */
-    public function setAssertResult($AssertResult)
-    {
-        $this->AssertResult = $AssertResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestamp()
-    {
-        return $this->AssertTimestamp;
-    }
-
-    /**
-     * @param mixed $AssertTimestamp
-     * @return Service
-     */
-    public function setAssertTimestamp($AssertTimestamp)
-    {
-        $this->AssertTimestamp = $AssertTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestampMonotonic()
-    {
-        return $this->AssertTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $AssertTimestampMonotonic
-     * @return Service
-     */
-    public function setAssertTimestampMonotonic($AssertTimestampMonotonic)
-    {
-        $this->AssertTimestampMonotonic = $AssertTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBefore(): array
-    {
-        return $this->Before;
-    }
-
-    /**
-     * @param array $Before
-     * @return Service
-     */
-    public function setBefore(array $Before): Service
-    {
-        $this->Before = $Before;
         return $this;
     }
 
@@ -883,78 +637,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getCanIsolate()
-    {
-        return $this->CanIsolate;
-    }
-
-    /**
-     * @param mixed $CanIsolate
-     * @return Service
-     */
-    public function setCanIsolate($CanIsolate)
-    {
-        $this->CanIsolate = $CanIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanReload()
-    {
-        return $this->CanReload;
-    }
-
-    /**
-     * @param mixed $CanReload
-     * @return Service
-     */
-    public function setCanReload($CanReload)
-    {
-        $this->CanReload = $CanReload;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStart()
-    {
-        return $this->CanStart;
-    }
-
-    /**
-     * @param mixed $CanStart
-     * @return Service
-     */
-    public function setCanStart($CanStart)
-    {
-        $this->CanStart = $CanStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStop()
-    {
-        return $this->CanStop;
-    }
-
-    /**
-     * @param mixed $CanStop
-     * @return Service
-     */
-    public function setCanStop($CanStop)
-    {
-        $this->CanStop = $CanStop;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCapabilityBoundingSet()
     {
         return $this->CapabilityBoundingSet;
@@ -967,60 +649,6 @@ class Service implements \JsonSerializable
     public function setCapabilityBoundingSet($CapabilityBoundingSet)
     {
         $this->CapabilityBoundingSet = $CapabilityBoundingSet;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionResult()
-    {
-        return $this->ConditionResult;
-    }
-
-    /**
-     * @param mixed $ConditionResult
-     * @return Service
-     */
-    public function setConditionResult($ConditionResult)
-    {
-        $this->ConditionResult = $ConditionResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestamp()
-    {
-        return $this->ConditionTimestamp;
-    }
-
-    /**
-     * @param mixed $ConditionTimestamp
-     * @return Service
-     */
-    public function setConditionTimestamp($ConditionTimestamp)
-    {
-        $this->ConditionTimestamp = $ConditionTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestampMonotonic()
-    {
-        return $this->ConditionTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ConditionTimestampMonotonic
-     * @return Service
-     */
-    public function setConditionTimestampMonotonic($ConditionTimestampMonotonic)
-    {
-        $this->ConditionTimestampMonotonic = $ConditionTimestampMonotonic;
         return $this;
     }
 
@@ -1099,24 +727,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getDefaultDependencies()
-    {
-        return $this->DefaultDependencies;
-    }
-
-    /**
-     * @param mixed $DefaultDependencies
-     * @return Service
-     */
-    public function setDefaultDependencies($DefaultDependencies)
-    {
-        $this->DefaultDependencies = $DefaultDependencies;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDelegate()
     {
         return $this->Delegate;
@@ -1129,24 +739,6 @@ class Service implements \JsonSerializable
     public function setDelegate($Delegate)
     {
         $this->Delegate = $Delegate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->Description;
-    }
-
-    /**
-     * @param mixed $Description
-     * @return Service
-     */
-    public function setDescription($Description)
-    {
-        $this->Description = $Description;
         return $this;
     }
 
@@ -1657,42 +1249,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->Id;
-    }
-
-    /**
-     * @param mixed $Id
-     * @return Service
-     */
-    public function setId($Id)
-    {
-        $this->Id = $Id;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIgnoreOnIsolate()
-    {
-        return $this->IgnoreOnIsolate;
-    }
-
-    /**
-     * @param mixed $IgnoreOnIsolate
-     * @return Service
-     */
-    public function setIgnoreOnIsolate($IgnoreOnIsolate)
-    {
-        $this->IgnoreOnIsolate = $IgnoreOnIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getIgnoreSIGPIPE()
     {
         return $this->IgnoreSIGPIPE;
@@ -1723,114 +1279,6 @@ class Service implements \JsonSerializable
     public function setInactiveEnterTimestamp($InactiveEnterTimestamp)
     {
         $this->InactiveEnterTimestamp = $InactiveEnterTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveEnterTimestampMonotonic()
-    {
-        return $this->InactiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveEnterTimestampMonotonic
-     * @return Service
-     */
-    public function setInactiveEnterTimestampMonotonic($InactiveEnterTimestampMonotonic)
-    {
-        $this->InactiveEnterTimestampMonotonic = $InactiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestamp()
-    {
-        return $this->InactiveExitTimestamp;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestamp
-     * @return Service
-     */
-    public function setInactiveExitTimestamp($InactiveExitTimestamp)
-    {
-        $this->InactiveExitTimestamp = $InactiveExitTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestampMonotonic()
-    {
-        return $this->InactiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestampMonotonic
-     * @return Service
-     */
-    public function setInactiveExitTimestampMonotonic($InactiveExitTimestampMonotonic)
-    {
-        $this->InactiveExitTimestampMonotonic = $InactiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInvocationID()
-    {
-        return $this->InvocationID;
-    }
-
-    /**
-     * @param mixed $InvocationID
-     * @return Service
-     */
-    public function setInvocationID($InvocationID)
-    {
-        $this->InvocationID = $InvocationID;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutAction()
-    {
-        return $this->JobTimeoutAction;
-    }
-
-    /**
-     * @param mixed $JobTimeoutAction
-     * @return Service
-     */
-    public function setJobTimeoutAction($JobTimeoutAction)
-    {
-        $this->JobTimeoutAction = $JobTimeoutAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutUSec()
-    {
-        return $this->JobTimeoutUSec;
-    }
-
-    /**
-     * @param mixed $JobTimeoutUSec
-     * @return Service
-     */
-    public function setJobTimeoutUSec($JobTimeoutUSec)
-    {
-        $this->JobTimeoutUSec = $JobTimeoutUSec;
         return $this;
     }
 
@@ -2449,42 +1897,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getLoadError()
-    {
-        return $this->LoadError;
-    }
-
-    /**
-     * @param mixed $LoadError
-     * @return Service
-     */
-    public function setLoadError($LoadError)
-    {
-        $this->LoadError = $LoadError;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLoadState()
-    {
-        return $this->LoadState;
-    }
-
-    /**
-     * @param mixed $LoadState
-     * @return Service
-     */
-    public function setLoadState($LoadState)
-    {
-        $this->LoadState = $LoadState;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMainPID()
     {
         return $this->MainPID;
@@ -2681,42 +2093,6 @@ class Service implements \JsonSerializable
     }
 
     /**
-     * @return array
-     */
-    public function getNames(): array
-    {
-        return $this->Names;
-    }
-
-    /**
-     * @param array $Names
-     * @return Service
-     */
-    public function setNames(array $Names): Service
-    {
-        $this->Names = $Names;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNeedDaemonReload()
-    {
-        return $this->NeedDaemonReload;
-    }
-
-    /**
-     * @param mixed $NeedDaemonReload
-     * @return Service
-     */
-    public function setNeedDaemonReload($NeedDaemonReload)
-    {
-        $this->NeedDaemonReload = $NeedDaemonReload;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getNice()
@@ -2809,24 +2185,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getOnFailureJobMode()
-    {
-        return $this->OnFailureJobMode;
-    }
-
-    /**
-     * @param mixed $OnFailureJobMode
-     * @return Service
-     */
-    public function setOnFailureJobMode($OnFailureJobMode)
-    {
-        $this->OnFailureJobMode = $OnFailureJobMode;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getPAMName()
     {
         return $this->PAMName;
@@ -2893,24 +2251,6 @@ class Service implements \JsonSerializable
     public function setPermissionsStartOnly($PermissionsStartOnly)
     {
         $this->PermissionsStartOnly = $PermissionsStartOnly;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerpetual()
-    {
-        return $this->Perpetual;
-    }
-
-    /**
-     * @param mixed $Perpetual
-     * @return Service
-     */
-    public function setPerpetual($Perpetual)
-    {
-        $this->Perpetual = $Perpetual;
         return $this;
     }
 
@@ -3127,42 +2467,6 @@ class Service implements \JsonSerializable
     public function setReadWritePaths(array $ReadWritePaths): Service
     {
         $this->ReadWritePaths = $ReadWritePaths;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStart()
-    {
-        return $this->RefuseManualStart;
-    }
-
-    /**
-     * @param mixed $RefuseManualStart
-     * @return Service
-     */
-    public function setRefuseManualStart($RefuseManualStart)
-    {
-        $this->RefuseManualStart = $RefuseManualStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStop()
-    {
-        return $this->RefuseManualStop;
-    }
-
-    /**
-     * @param mixed $RefuseManualStop
-     * @return Service
-     */
-    public function setRefuseManualStop($RefuseManualStop)
-    {
-        $this->RefuseManualStop = $RefuseManualStop;
         return $this;
     }
 
@@ -3619,60 +2923,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getStartLimitAction()
-    {
-        return $this->StartLimitAction;
-    }
-
-    /**
-     * @param mixed $StartLimitAction
-     * @return Service
-     */
-    public function setStartLimitAction($StartLimitAction)
-    {
-        $this->StartLimitAction = $StartLimitAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitBurst()
-    {
-        return $this->StartLimitBurst;
-    }
-
-    /**
-     * @param mixed $StartLimitBurst
-     * @return Service
-     */
-    public function setStartLimitBurst($StartLimitBurst)
-    {
-        $this->StartLimitBurst = $StartLimitBurst;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitIntervalSec()
-    {
-        return $this->StartLimitIntervalSec;
-    }
-
-    /**
-     * @param mixed $StartLimitIntervalSec
-     * @return Service
-     */
-    public function setStartLimitIntervalSec($StartLimitIntervalSec)
-    {
-        $this->StartLimitIntervalSec = $StartLimitIntervalSec;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStartupBlockIOWeight()
     {
         return $this->StartupBlockIOWeight;
@@ -3745,42 +2995,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getStateChangeTimestamp()
-    {
-        return $this->StateChangeTimestamp;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestamp
-     * @return Service
-     */
-    public function setStateChangeTimestamp($StateChangeTimestamp)
-    {
-        $this->StateChangeTimestamp = $StateChangeTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestampMonotonic()
-    {
-        return $this->StateChangeTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestampMonotonic
-     * @return Service
-     */
-    public function setStateChangeTimestampMonotonic($StateChangeTimestampMonotonic)
-    {
-        $this->StateChangeTimestampMonotonic = $StateChangeTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStatusText()
     {
         return $this->StatusText;
@@ -3811,42 +3025,6 @@ class Service implements \JsonSerializable
     public function setStatusErrno($StatusErrno)
     {
         $this->StatusErrno = $StatusErrno;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStopWhenUnneeded()
-    {
-        return $this->StopWhenUnneeded;
-    }
-
-    /**
-     * @param mixed $StopWhenUnneeded
-     * @return Service
-     */
-    public function setStopWhenUnneeded($StopWhenUnneeded)
-    {
-        $this->StopWhenUnneeded = $StopWhenUnneeded;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSubState()
-    {
-        return $this->SubState;
-    }
-
-    /**
-     * @param mixed $SubState
-     * @return Service
-     */
-    public function setSubState($SubState)
-    {
-        $this->SubState = $SubState;
         return $this;
     }
 
@@ -4159,24 +3337,6 @@ class Service implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getTransient()
-    {
-        return $this->Transient;
-    }
-
-    /**
-     * @param mixed $Transient
-     * @return Service
-     */
-    public function setTransient($Transient)
-    {
-        $this->Transient = $Transient;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTriggeredBy()
     {
         return $this->TriggeredBy;
@@ -4442,10 +3602,5 @@ class Service implements \JsonSerializable
     {
         $this->WorkingDirectory = $WorkingDirectory;
         return $this;
-    }
-
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }

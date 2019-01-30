@@ -112,8 +112,12 @@ class SystemdState
         $split = explode(PHP_EOL, $service);
 
         preg_match('/Id=(?<name>.*)/m', $service, $matches);
-        $explode = explode('.', $matches['name']);
-        $type = ucfirst($explode[count($explode) - 1]);
+        if (!$matches) {
+            $type = 'Systemd';
+        } else {
+            $explode = explode('.', $matches['name']);
+            $type = ucfirst($explode[count($explode) - 1]);
+        }
 
         $class = 'CyberLine\SystemdState\Types\\' . $type;
         $class = new $class();

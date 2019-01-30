@@ -2,29 +2,11 @@
 
 namespace CyberLine\SystemdState\Types;
 
-class Mount implements \JsonSerializable
+class Mount extends AbstractType
 {
-    private $ActiveEnterTimestamp;
-
-    private $ActiveEnterTimestampMonotonic;
-
-    private $ActiveExitTimestampMonotonic;
-
-    private $ActiveState;
-
     private $After = [];
 
-    private $AllowIsolate;
-
     private $AmbientCapabilities;
-
-    private $AssertResult;
-
-    private $AssertTimestamp;
-
-    private $AssertTimestampMonotonic;
-
-    private $Before = [];
 
     private $BindsTo = [];
 
@@ -48,21 +30,7 @@ class Mount implements \JsonSerializable
 
     private $CPUWeight;
 
-    private $CanIsolate;
-
-    private $CanReload;
-
-    private $CanStart;
-
-    private $CanStop;
-
     private $CapabilityBoundingSet;
-
-    private $ConditionResult;
-
-    private $ConditionTimestamp;
-
-    private $ConditionTimestampMonotonic;
 
     private $Conflicts = [];
 
@@ -70,11 +38,7 @@ class Mount implements \JsonSerializable
 
     private $ControlPID;
 
-    private $DefaultDependencies;
-
     private $Delegate;
-
-    private $Description;
 
     private $DevicePolicy;
 
@@ -96,23 +60,7 @@ class Mount implements \JsonSerializable
 
     private $IOWeight;
 
-    private $Id;
-
-    private $IgnoreOnIsolate;
-
     private $IgnoreSIGPIPE;
-
-    private $InactiveEnterTimestampMonotonic;
-
-    private $InactiveExitTimestamp;
-
-    private $InactiveExitTimestampMonotonic;
-
-    private $InvocationID;
-
-    private $JobTimeoutAction;
-
-    private $JobTimeoutUSec;
 
     private $KillMode;
 
@@ -184,10 +132,6 @@ class Mount implements \JsonSerializable
 
     private $LimitSTACKSoft;
 
-    private $LoadError;
-
-    private $LoadState;
-
     private $MemoryAccounting;
 
     private $MemoryCurrent;
@@ -206,10 +150,6 @@ class Mount implements \JsonSerializable
 
     private $MountFlags;
 
-    private $Names = [];
-
-    private $NeedDaemonReload;
-
     private $Nice;
 
     private $NoNewPrivileges;
@@ -218,11 +158,7 @@ class Mount implements \JsonSerializable
 
     private $OOMScoreAdjust;
 
-    private $OnFailureJobMode;
-
     private $Options;
-
-    private $Perpetual;
 
     private $PrivateDevices;
 
@@ -241,10 +177,6 @@ class Mount implements \JsonSerializable
     private $ProtectKernelTunables;
 
     private $ProtectSystem;
-
-    private $RefuseManualStart;
-
-    private $RefuseManualStop;
 
     private $RemoveIPC;
 
@@ -282,12 +214,6 @@ class Mount implements \JsonSerializable
 
     private $StandardOutput;
 
-    private $StartLimitAction;
-
-    private $StartLimitBurst;
-
-    private $StartLimitIntervalSec;
-
     private $StartupBlockIOWeight;
 
     private $StartupCPUShares;
@@ -295,14 +221,6 @@ class Mount implements \JsonSerializable
     private $StartupCPUWeight;
 
     private $StartupIOWeight;
-
-    private $StateChangeTimestamp;
-
-    private $StateChangeTimestampMonotonic;
-
-    private $StopWhenUnneeded;
-
-    private $SubState;
 
     private $SyslogFacility;
 
@@ -330,8 +248,6 @@ class Mount implements \JsonSerializable
 
     private $TimerSlackNSec;
 
-    private $Transient;
-
     private $TriggeredBy;
 
     private $Type;
@@ -351,78 +267,6 @@ class Mount implements \JsonSerializable
     private $What;
 
     private $Where;
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestamp()
-    {
-        return $this->ActiveEnterTimestamp;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestamp
-     * @return Mount
-     */
-    public function setActiveEnterTimestamp($ActiveEnterTimestamp)
-    {
-        $this->ActiveEnterTimestamp = $ActiveEnterTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestampMonotonic()
-    {
-        return $this->ActiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestampMonotonic
-     * @return Mount
-     */
-    public function setActiveEnterTimestampMonotonic($ActiveEnterTimestampMonotonic)
-    {
-        $this->ActiveEnterTimestampMonotonic = $ActiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveExitTimestampMonotonic()
-    {
-        return $this->ActiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveExitTimestampMonotonic
-     * @return Mount
-     */
-    public function setActiveExitTimestampMonotonic($ActiveExitTimestampMonotonic)
-    {
-        $this->ActiveExitTimestampMonotonic = $ActiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveState()
-    {
-        return $this->ActiveState;
-    }
-
-    /**
-     * @param mixed $ActiveState
-     * @return Mount
-     */
-    public function setActiveState($ActiveState)
-    {
-        $this->ActiveState = $ActiveState;
-        return $this;
-    }
 
     /**
      * @return array
@@ -445,24 +289,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getAllowIsolate()
-    {
-        return $this->AllowIsolate;
-    }
-
-    /**
-     * @param mixed $AllowIsolate
-     * @return Mount
-     */
-    public function setAllowIsolate($AllowIsolate)
-    {
-        $this->AllowIsolate = $AllowIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getAmbientCapabilities()
     {
         return $this->AmbientCapabilities;
@@ -475,78 +301,6 @@ class Mount implements \JsonSerializable
     public function setAmbientCapabilities($AmbientCapabilities)
     {
         $this->AmbientCapabilities = $AmbientCapabilities;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertResult()
-    {
-        return $this->AssertResult;
-    }
-
-    /**
-     * @param mixed $AssertResult
-     * @return Mount
-     */
-    public function setAssertResult($AssertResult)
-    {
-        $this->AssertResult = $AssertResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestamp()
-    {
-        return $this->AssertTimestamp;
-    }
-
-    /**
-     * @param mixed $AssertTimestamp
-     * @return Mount
-     */
-    public function setAssertTimestamp($AssertTimestamp)
-    {
-        $this->AssertTimestamp = $AssertTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestampMonotonic()
-    {
-        return $this->AssertTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $AssertTimestampMonotonic
-     * @return Mount
-     */
-    public function setAssertTimestampMonotonic($AssertTimestampMonotonic)
-    {
-        $this->AssertTimestampMonotonic = $AssertTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBefore(): array
-    {
-        return $this->Before;
-    }
-
-    /**
-     * @param array $Before
-     * @return Mount
-     */
-    public function setBefore(array $Before): Mount
-    {
-        $this->Before = $Before;
         return $this;
     }
 
@@ -751,78 +505,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getCanIsolate()
-    {
-        return $this->CanIsolate;
-    }
-
-    /**
-     * @param mixed $CanIsolate
-     * @return Mount
-     */
-    public function setCanIsolate($CanIsolate)
-    {
-        $this->CanIsolate = $CanIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanReload()
-    {
-        return $this->CanReload;
-    }
-
-    /**
-     * @param mixed $CanReload
-     * @return Mount
-     */
-    public function setCanReload($CanReload)
-    {
-        $this->CanReload = $CanReload;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStart()
-    {
-        return $this->CanStart;
-    }
-
-    /**
-     * @param mixed $CanStart
-     * @return Mount
-     */
-    public function setCanStart($CanStart)
-    {
-        $this->CanStart = $CanStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStop()
-    {
-        return $this->CanStop;
-    }
-
-    /**
-     * @param mixed $CanStop
-     * @return Mount
-     */
-    public function setCanStop($CanStop)
-    {
-        $this->CanStop = $CanStop;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCapabilityBoundingSet()
     {
         return $this->CapabilityBoundingSet;
@@ -835,60 +517,6 @@ class Mount implements \JsonSerializable
     public function setCapabilityBoundingSet($CapabilityBoundingSet)
     {
         $this->CapabilityBoundingSet = $CapabilityBoundingSet;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionResult()
-    {
-        return $this->ConditionResult;
-    }
-
-    /**
-     * @param mixed $ConditionResult
-     * @return Mount
-     */
-    public function setConditionResult($ConditionResult)
-    {
-        $this->ConditionResult = $ConditionResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestamp()
-    {
-        return $this->ConditionTimestamp;
-    }
-
-    /**
-     * @param mixed $ConditionTimestamp
-     * @return Mount
-     */
-    public function setConditionTimestamp($ConditionTimestamp)
-    {
-        $this->ConditionTimestamp = $ConditionTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestampMonotonic()
-    {
-        return $this->ConditionTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ConditionTimestampMonotonic
-     * @return Mount
-     */
-    public function setConditionTimestampMonotonic($ConditionTimestampMonotonic)
-    {
-        $this->ConditionTimestampMonotonic = $ConditionTimestampMonotonic;
         return $this;
     }
 
@@ -949,24 +577,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getDefaultDependencies()
-    {
-        return $this->DefaultDependencies;
-    }
-
-    /**
-     * @param mixed $DefaultDependencies
-     * @return Mount
-     */
-    public function setDefaultDependencies($DefaultDependencies)
-    {
-        $this->DefaultDependencies = $DefaultDependencies;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDelegate()
     {
         return $this->Delegate;
@@ -979,24 +589,6 @@ class Mount implements \JsonSerializable
     public function setDelegate($Delegate)
     {
         $this->Delegate = $Delegate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->Description;
-    }
-
-    /**
-     * @param mixed $Description
-     * @return Mount
-     */
-    public function setDescription($Description)
-    {
-        $this->Description = $Description;
         return $this;
     }
 
@@ -1183,42 +775,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->Id;
-    }
-
-    /**
-     * @param mixed $Id
-     * @return Mount
-     */
-    public function setId($Id)
-    {
-        $this->Id = $Id;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIgnoreOnIsolate()
-    {
-        return $this->IgnoreOnIsolate;
-    }
-
-    /**
-     * @param mixed $IgnoreOnIsolate
-     * @return Mount
-     */
-    public function setIgnoreOnIsolate($IgnoreOnIsolate)
-    {
-        $this->IgnoreOnIsolate = $IgnoreOnIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getIgnoreSIGPIPE()
     {
         return $this->IgnoreSIGPIPE;
@@ -1231,114 +787,6 @@ class Mount implements \JsonSerializable
     public function setIgnoreSIGPIPE($IgnoreSIGPIPE)
     {
         $this->IgnoreSIGPIPE = $IgnoreSIGPIPE;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveEnterTimestampMonotonic()
-    {
-        return $this->InactiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveEnterTimestampMonotonic
-     * @return Mount
-     */
-    public function setInactiveEnterTimestampMonotonic($InactiveEnterTimestampMonotonic)
-    {
-        $this->InactiveEnterTimestampMonotonic = $InactiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestamp()
-    {
-        return $this->InactiveExitTimestamp;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestamp
-     * @return Mount
-     */
-    public function setInactiveExitTimestamp($InactiveExitTimestamp)
-    {
-        $this->InactiveExitTimestamp = $InactiveExitTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestampMonotonic()
-    {
-        return $this->InactiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestampMonotonic
-     * @return Mount
-     */
-    public function setInactiveExitTimestampMonotonic($InactiveExitTimestampMonotonic)
-    {
-        $this->InactiveExitTimestampMonotonic = $InactiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInvocationID()
-    {
-        return $this->InvocationID;
-    }
-
-    /**
-     * @param mixed $InvocationID
-     * @return Mount
-     */
-    public function setInvocationID($InvocationID)
-    {
-        $this->InvocationID = $InvocationID;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutAction()
-    {
-        return $this->JobTimeoutAction;
-    }
-
-    /**
-     * @param mixed $JobTimeoutAction
-     * @return Mount
-     */
-    public function setJobTimeoutAction($JobTimeoutAction)
-    {
-        $this->JobTimeoutAction = $JobTimeoutAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutUSec()
-    {
-        return $this->JobTimeoutUSec;
-    }
-
-    /**
-     * @param mixed $JobTimeoutUSec
-     * @return Mount
-     */
-    public function setJobTimeoutUSec($JobTimeoutUSec)
-    {
-        $this->JobTimeoutUSec = $JobTimeoutUSec;
         return $this;
     }
 
@@ -1975,42 +1423,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getLoadError()
-    {
-        return $this->LoadError;
-    }
-
-    /**
-     * @param mixed $LoadError
-     * @return Mount
-     */
-    public function setLoadError($LoadError)
-    {
-        $this->LoadError = $LoadError;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLoadState()
-    {
-        return $this->LoadState;
-    }
-
-    /**
-     * @param mixed $LoadState
-     * @return Mount
-     */
-    public function setLoadState($LoadState)
-    {
-        $this->LoadState = $LoadState;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMemoryAccounting()
     {
         return $this->MemoryAccounting;
@@ -2171,42 +1583,6 @@ class Mount implements \JsonSerializable
     }
 
     /**
-     * @return array
-     */
-    public function getNames(): array
-    {
-        return $this->Names;
-    }
-
-    /**
-     * @param array $Names
-     * @return Mount
-     */
-    public function setNames(array $Names): Mount
-    {
-        $this->Names = $Names;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNeedDaemonReload()
-    {
-        return $this->NeedDaemonReload;
-    }
-
-    /**
-     * @param mixed $NeedDaemonReload
-     * @return Mount
-     */
-    public function setNeedDaemonReload($NeedDaemonReload)
-    {
-        $this->NeedDaemonReload = $NeedDaemonReload;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getNice()
@@ -2281,24 +1657,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getOnFailureJobMode()
-    {
-        return $this->OnFailureJobMode;
-    }
-
-    /**
-     * @param mixed $OnFailureJobMode
-     * @return Mount
-     */
-    public function setOnFailureJobMode($OnFailureJobMode)
-    {
-        $this->OnFailureJobMode = $OnFailureJobMode;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getOptions()
     {
         return $this->Options;
@@ -2311,24 +1669,6 @@ class Mount implements \JsonSerializable
     public function setOptions($Options)
     {
         $this->Options = $Options;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerpetual()
-    {
-        return $this->Perpetual;
-    }
-
-    /**
-     * @param mixed $Perpetual
-     * @return Mount
-     */
-    public function setPerpetual($Perpetual)
-    {
-        $this->Perpetual = $Perpetual;
         return $this;
     }
 
@@ -2491,42 +1831,6 @@ class Mount implements \JsonSerializable
     public function setProtectSystem($ProtectSystem)
     {
         $this->ProtectSystem = $ProtectSystem;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStart()
-    {
-        return $this->RefuseManualStart;
-    }
-
-    /**
-     * @param mixed $RefuseManualStart
-     * @return Mount
-     */
-    public function setRefuseManualStart($RefuseManualStart)
-    {
-        $this->RefuseManualStart = $RefuseManualStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStop()
-    {
-        return $this->RefuseManualStop;
-    }
-
-    /**
-     * @param mixed $RefuseManualStop
-     * @return Mount
-     */
-    public function setRefuseManualStop($RefuseManualStop)
-    {
-        $this->RefuseManualStop = $RefuseManualStop;
         return $this;
     }
 
@@ -2857,60 +2161,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getStartLimitAction()
-    {
-        return $this->StartLimitAction;
-    }
-
-    /**
-     * @param mixed $StartLimitAction
-     * @return Mount
-     */
-    public function setStartLimitAction($StartLimitAction)
-    {
-        $this->StartLimitAction = $StartLimitAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitBurst()
-    {
-        return $this->StartLimitBurst;
-    }
-
-    /**
-     * @param mixed $StartLimitBurst
-     * @return Mount
-     */
-    public function setStartLimitBurst($StartLimitBurst)
-    {
-        $this->StartLimitBurst = $StartLimitBurst;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitIntervalSec()
-    {
-        return $this->StartLimitIntervalSec;
-    }
-
-    /**
-     * @param mixed $StartLimitIntervalSec
-     * @return Mount
-     */
-    public function setStartLimitIntervalSec($StartLimitIntervalSec)
-    {
-        $this->StartLimitIntervalSec = $StartLimitIntervalSec;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStartupBlockIOWeight()
     {
         return $this->StartupBlockIOWeight;
@@ -2977,78 +2227,6 @@ class Mount implements \JsonSerializable
     public function setStartupIOWeight($StartupIOWeight)
     {
         $this->StartupIOWeight = $StartupIOWeight;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestamp()
-    {
-        return $this->StateChangeTimestamp;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestamp
-     * @return Mount
-     */
-    public function setStateChangeTimestamp($StateChangeTimestamp)
-    {
-        $this->StateChangeTimestamp = $StateChangeTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestampMonotonic()
-    {
-        return $this->StateChangeTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestampMonotonic
-     * @return Mount
-     */
-    public function setStateChangeTimestampMonotonic($StateChangeTimestampMonotonic)
-    {
-        $this->StateChangeTimestampMonotonic = $StateChangeTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStopWhenUnneeded()
-    {
-        return $this->StopWhenUnneeded;
-    }
-
-    /**
-     * @param mixed $StopWhenUnneeded
-     * @return Mount
-     */
-    public function setStopWhenUnneeded($StopWhenUnneeded)
-    {
-        $this->StopWhenUnneeded = $StopWhenUnneeded;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSubState()
-    {
-        return $this->SubState;
-    }
-
-    /**
-     * @param mixed $SubState
-     * @return Mount
-     */
-    public function setSubState($SubState)
-    {
-        $this->SubState = $SubState;
         return $this;
     }
 
@@ -3289,24 +2467,6 @@ class Mount implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getTransient()
-    {
-        return $this->Transient;
-    }
-
-    /**
-     * @param mixed $Transient
-     * @return Mount
-     */
-    public function setTransient($Transient)
-    {
-        $this->Transient = $Transient;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTriggeredBy()
     {
         return $this->TriggeredBy;
@@ -3482,10 +2642,5 @@ class Mount implements \JsonSerializable
     {
         $this->Where = $Where;
         return $this;
-    }
-
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }

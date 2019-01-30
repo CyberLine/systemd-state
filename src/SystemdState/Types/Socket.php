@@ -2,33 +2,15 @@
 
 namespace CyberLine\SystemdState\Types;
 
-class Socket implements \JsonSerializable
+class Socket extends AbstractType
 {
     private $Accept;
 
-    private $ActiveEnterTimestamp;
-
-    private $ActiveEnterTimestampMonotonic;
-
-    private $ActiveExitTimestampMonotonic;
-
-    private $ActiveState;
-
     private $After = [];
-
-    private $AllowIsolate;
 
     private $AmbientCapabilities;
 
-    private $AssertResult;
-
-    private $AssertTimestamp;
-
-    private $AssertTimestampMonotonic;
-
     private $Backlog;
-
-    private $Before = [];
 
     private $BindIPv6Only;
 
@@ -54,21 +36,7 @@ class Socket implements \JsonSerializable
 
     private $CPUWeight;
 
-    private $CanIsolate;
-
-    private $CanReload;
-
-    private $CanStart;
-
-    private $CanStop;
-
     private $CapabilityBoundingSet;
-
-    private $ConditionResult;
-
-    private $ConditionTimestamp;
-
-    private $ConditionTimestampMonotonic;
 
     private $ConflictedBy = [];
 
@@ -76,13 +44,9 @@ class Socket implements \JsonSerializable
 
     private $ControlPID;
 
-    private $DefaultDependencies;
-
     private $DeferAcceptUSec;
 
     private $Delegate;
-
-    private $Description;
 
     private $DevicePolicy;
 
@@ -110,23 +74,7 @@ class Socket implements \JsonSerializable
 
     private $IPTTL;
 
-    private $Id;
-
-    private $IgnoreOnIsolate;
-
     private $IgnoreSIGPIPE;
-
-    private $InactiveEnterTimestampMonotonic;
-
-    private $InactiveExitTimestamp;
-
-    private $InactiveExitTimestampMonotonic;
-
-    private $InvocationID;
-
-    private $JobTimeoutAction;
-
-    private $JobTimeoutUSec;
 
     private $KeepAlive;
 
@@ -214,10 +162,6 @@ class Socket implements \JsonSerializable
 
     private $ListenStream;
 
-    private $LoadError;
-
-    private $LoadState;
-
     private $Mark;
 
     private $MaxConnections;
@@ -250,10 +194,6 @@ class Socket implements \JsonSerializable
 
     private $NConnections;
 
-    private $Names = [];
-
-    private $NeedDaemonReload;
-
     private $Nice;
 
     private $NoDelay;
@@ -264,13 +204,9 @@ class Socket implements \JsonSerializable
 
     private $OOMScoreAdjust;
 
-    private $OnFailureJobMode;
-
     private $PassCredentials;
 
     private $PassSecurity;
-
-    private $Perpetual;
 
     private $PipeSize;
 
@@ -295,10 +231,6 @@ class Socket implements \JsonSerializable
     private $ProtectSystem;
 
     private $ReceiveBuffer;
-
-    private $RefuseManualStart;
-
-    private $RefuseManualStop;
 
     private $RemoveIPC;
 
@@ -340,12 +272,6 @@ class Socket implements \JsonSerializable
 
     private $StandardOutput;
 
-    private $StartLimitAction;
-
-    private $StartLimitBurst;
-
-    private $StartLimitIntervalSec;
-
     private $StartupBlockIOWeight;
 
     private $StartupCPUShares;
@@ -353,14 +279,6 @@ class Socket implements \JsonSerializable
     private $StartupCPUWeight;
 
     private $StartupIOWeight;
-
-    private $StateChangeTimestamp;
-
-    private $StateChangeTimestampMonotonic;
-
-    private $StopWhenUnneeded;
-
-    private $SubState;
 
     private $Symlinks;
 
@@ -389,8 +307,6 @@ class Socket implements \JsonSerializable
     private $TimeoutUSec;
 
     private $TimerSlackNSec;
-
-    private $Transient;
 
     private $Transparent;
 
@@ -433,78 +349,6 @@ class Socket implements \JsonSerializable
     }
 
     /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestamp()
-    {
-        return $this->ActiveEnterTimestamp;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestamp
-     * @return Socket
-     */
-    public function setActiveEnterTimestamp($ActiveEnterTimestamp)
-    {
-        $this->ActiveEnterTimestamp = $ActiveEnterTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveEnterTimestampMonotonic()
-    {
-        return $this->ActiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveEnterTimestampMonotonic
-     * @return Socket
-     */
-    public function setActiveEnterTimestampMonotonic($ActiveEnterTimestampMonotonic)
-    {
-        $this->ActiveEnterTimestampMonotonic = $ActiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveExitTimestampMonotonic()
-    {
-        return $this->ActiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ActiveExitTimestampMonotonic
-     * @return Socket
-     */
-    public function setActiveExitTimestampMonotonic($ActiveExitTimestampMonotonic)
-    {
-        $this->ActiveExitTimestampMonotonic = $ActiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActiveState()
-    {
-        return $this->ActiveState;
-    }
-
-    /**
-     * @param mixed $ActiveState
-     * @return Socket
-     */
-    public function setActiveState($ActiveState)
-    {
-        $this->ActiveState = $ActiveState;
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getAfter(): array
@@ -519,24 +363,6 @@ class Socket implements \JsonSerializable
     public function setAfter(array $After): Socket
     {
         $this->After = $After;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAllowIsolate()
-    {
-        return $this->AllowIsolate;
-    }
-
-    /**
-     * @param mixed $AllowIsolate
-     * @return Socket
-     */
-    public function setAllowIsolate($AllowIsolate)
-    {
-        $this->AllowIsolate = $AllowIsolate;
         return $this;
     }
 
@@ -561,60 +387,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getAssertResult()
-    {
-        return $this->AssertResult;
-    }
-
-    /**
-     * @param mixed $AssertResult
-     * @return Socket
-     */
-    public function setAssertResult($AssertResult)
-    {
-        $this->AssertResult = $AssertResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestamp()
-    {
-        return $this->AssertTimestamp;
-    }
-
-    /**
-     * @param mixed $AssertTimestamp
-     * @return Socket
-     */
-    public function setAssertTimestamp($AssertTimestamp)
-    {
-        $this->AssertTimestamp = $AssertTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAssertTimestampMonotonic()
-    {
-        return $this->AssertTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $AssertTimestampMonotonic
-     * @return Socket
-     */
-    public function setAssertTimestampMonotonic($AssertTimestampMonotonic)
-    {
-        $this->AssertTimestampMonotonic = $AssertTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getBacklog()
     {
         return $this->Backlog;
@@ -627,24 +399,6 @@ class Socket implements \JsonSerializable
     public function setBacklog($Backlog)
     {
         $this->Backlog = $Backlog;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBefore(): array
-    {
-        return $this->Before;
-    }
-
-    /**
-     * @param array $Before
-     * @return Socket
-     */
-    public function setBefore(array $Before): Socket
-    {
-        $this->Before = $Before;
         return $this;
     }
 
@@ -867,78 +621,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getCanIsolate()
-    {
-        return $this->CanIsolate;
-    }
-
-    /**
-     * @param mixed $CanIsolate
-     * @return Socket
-     */
-    public function setCanIsolate($CanIsolate)
-    {
-        $this->CanIsolate = $CanIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanReload()
-    {
-        return $this->CanReload;
-    }
-
-    /**
-     * @param mixed $CanReload
-     * @return Socket
-     */
-    public function setCanReload($CanReload)
-    {
-        $this->CanReload = $CanReload;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStart()
-    {
-        return $this->CanStart;
-    }
-
-    /**
-     * @param mixed $CanStart
-     * @return Socket
-     */
-    public function setCanStart($CanStart)
-    {
-        $this->CanStart = $CanStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCanStop()
-    {
-        return $this->CanStop;
-    }
-
-    /**
-     * @param mixed $CanStop
-     * @return Socket
-     */
-    public function setCanStop($CanStop)
-    {
-        $this->CanStop = $CanStop;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCapabilityBoundingSet()
     {
         return $this->CapabilityBoundingSet;
@@ -951,60 +633,6 @@ class Socket implements \JsonSerializable
     public function setCapabilityBoundingSet($CapabilityBoundingSet)
     {
         $this->CapabilityBoundingSet = $CapabilityBoundingSet;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionResult()
-    {
-        return $this->ConditionResult;
-    }
-
-    /**
-     * @param mixed $ConditionResult
-     * @return Socket
-     */
-    public function setConditionResult($ConditionResult)
-    {
-        $this->ConditionResult = $ConditionResult;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestamp()
-    {
-        return $this->ConditionTimestamp;
-    }
-
-    /**
-     * @param mixed $ConditionTimestamp
-     * @return Socket
-     */
-    public function setConditionTimestamp($ConditionTimestamp)
-    {
-        $this->ConditionTimestamp = $ConditionTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConditionTimestampMonotonic()
-    {
-        return $this->ConditionTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $ConditionTimestampMonotonic
-     * @return Socket
-     */
-    public function setConditionTimestampMonotonic($ConditionTimestampMonotonic)
-    {
-        $this->ConditionTimestampMonotonic = $ConditionTimestampMonotonic;
         return $this;
     }
 
@@ -1065,24 +693,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getDefaultDependencies()
-    {
-        return $this->DefaultDependencies;
-    }
-
-    /**
-     * @param mixed $DefaultDependencies
-     * @return Socket
-     */
-    public function setDefaultDependencies($DefaultDependencies)
-    {
-        $this->DefaultDependencies = $DefaultDependencies;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDeferAcceptUSec()
     {
         return $this->DeferAcceptUSec;
@@ -1113,24 +723,6 @@ class Socket implements \JsonSerializable
     public function setDelegate($Delegate)
     {
         $this->Delegate = $Delegate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->Description;
-    }
-
-    /**
-     * @param mixed $Description
-     * @return Socket
-     */
-    public function setDescription($Description)
-    {
-        $this->Description = $Description;
         return $this;
     }
 
@@ -1371,42 +963,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->Id;
-    }
-
-    /**
-     * @param mixed $Id
-     * @return Socket
-     */
-    public function setId($Id)
-    {
-        $this->Id = $Id;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIgnoreOnIsolate()
-    {
-        return $this->IgnoreOnIsolate;
-    }
-
-    /**
-     * @param mixed $IgnoreOnIsolate
-     * @return Socket
-     */
-    public function setIgnoreOnIsolate($IgnoreOnIsolate)
-    {
-        $this->IgnoreOnIsolate = $IgnoreOnIsolate;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getIgnoreSIGPIPE()
     {
         return $this->IgnoreSIGPIPE;
@@ -1419,114 +975,6 @@ class Socket implements \JsonSerializable
     public function setIgnoreSIGPIPE($IgnoreSIGPIPE)
     {
         $this->IgnoreSIGPIPE = $IgnoreSIGPIPE;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveEnterTimestampMonotonic()
-    {
-        return $this->InactiveEnterTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveEnterTimestampMonotonic
-     * @return Socket
-     */
-    public function setInactiveEnterTimestampMonotonic($InactiveEnterTimestampMonotonic)
-    {
-        $this->InactiveEnterTimestampMonotonic = $InactiveEnterTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestamp()
-    {
-        return $this->InactiveExitTimestamp;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestamp
-     * @return Socket
-     */
-    public function setInactiveExitTimestamp($InactiveExitTimestamp)
-    {
-        $this->InactiveExitTimestamp = $InactiveExitTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInactiveExitTimestampMonotonic()
-    {
-        return $this->InactiveExitTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $InactiveExitTimestampMonotonic
-     * @return Socket
-     */
-    public function setInactiveExitTimestampMonotonic($InactiveExitTimestampMonotonic)
-    {
-        $this->InactiveExitTimestampMonotonic = $InactiveExitTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInvocationID()
-    {
-        return $this->InvocationID;
-    }
-
-    /**
-     * @param mixed $InvocationID
-     * @return Socket
-     */
-    public function setInvocationID($InvocationID)
-    {
-        $this->InvocationID = $InvocationID;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutAction()
-    {
-        return $this->JobTimeoutAction;
-    }
-
-    /**
-     * @param mixed $JobTimeoutAction
-     * @return Socket
-     */
-    public function setJobTimeoutAction($JobTimeoutAction)
-    {
-        $this->JobTimeoutAction = $JobTimeoutAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getJobTimeoutUSec()
-    {
-        return $this->JobTimeoutUSec;
-    }
-
-    /**
-     * @param mixed $JobTimeoutUSec
-     * @return Socket
-     */
-    public function setJobTimeoutUSec($JobTimeoutUSec)
-    {
-        $this->JobTimeoutUSec = $JobTimeoutUSec;
         return $this;
     }
 
@@ -2307,42 +1755,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getLoadError()
-    {
-        return $this->LoadError;
-    }
-
-    /**
-     * @param mixed $LoadError
-     * @return Socket
-     */
-    public function setLoadError($LoadError)
-    {
-        $this->LoadError = $LoadError;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLoadState()
-    {
-        return $this->LoadState;
-    }
-
-    /**
-     * @param mixed $LoadState
-     * @return Socket
-     */
-    public function setLoadState($LoadState)
-    {
-        $this->LoadState = $LoadState;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMark()
     {
         return $this->Mark;
@@ -2629,42 +2041,6 @@ class Socket implements \JsonSerializable
     }
 
     /**
-     * @return array
-     */
-    public function getNames(): array
-    {
-        return $this->Names;
-    }
-
-    /**
-     * @param array $Names
-     * @return Socket
-     */
-    public function setNames(array $Names): Socket
-    {
-        $this->Names = $Names;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNeedDaemonReload()
-    {
-        return $this->NeedDaemonReload;
-    }
-
-    /**
-     * @param mixed $NeedDaemonReload
-     * @return Socket
-     */
-    public function setNeedDaemonReload($NeedDaemonReload)
-    {
-        $this->NeedDaemonReload = $NeedDaemonReload;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getNice()
@@ -2757,24 +2133,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getOnFailureJobMode()
-    {
-        return $this->OnFailureJobMode;
-    }
-
-    /**
-     * @param mixed $OnFailureJobMode
-     * @return Socket
-     */
-    public function setOnFailureJobMode($OnFailureJobMode)
-    {
-        $this->OnFailureJobMode = $OnFailureJobMode;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getPassCredentials()
     {
         return $this->PassCredentials;
@@ -2805,24 +2163,6 @@ class Socket implements \JsonSerializable
     public function setPassSecurity($PassSecurity)
     {
         $this->PassSecurity = $PassSecurity;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerpetual()
-    {
-        return $this->Perpetual;
-    }
-
-    /**
-     * @param mixed $Perpetual
-     * @return Socket
-     */
-    public function setPerpetual($Perpetual)
-    {
-        $this->Perpetual = $Perpetual;
         return $this;
     }
 
@@ -3039,42 +2379,6 @@ class Socket implements \JsonSerializable
     public function setReceiveBuffer($ReceiveBuffer)
     {
         $this->ReceiveBuffer = $ReceiveBuffer;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStart()
-    {
-        return $this->RefuseManualStart;
-    }
-
-    /**
-     * @param mixed $RefuseManualStart
-     * @return Socket
-     */
-    public function setRefuseManualStart($RefuseManualStart)
-    {
-        $this->RefuseManualStart = $RefuseManualStart;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRefuseManualStop()
-    {
-        return $this->RefuseManualStop;
-    }
-
-    /**
-     * @param mixed $RefuseManualStop
-     * @return Socket
-     */
-    public function setRefuseManualStop($RefuseManualStop)
-    {
-        $this->RefuseManualStop = $RefuseManualStop;
         return $this;
     }
 
@@ -3441,60 +2745,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getStartLimitAction()
-    {
-        return $this->StartLimitAction;
-    }
-
-    /**
-     * @param mixed $StartLimitAction
-     * @return Socket
-     */
-    public function setStartLimitAction($StartLimitAction)
-    {
-        $this->StartLimitAction = $StartLimitAction;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitBurst()
-    {
-        return $this->StartLimitBurst;
-    }
-
-    /**
-     * @param mixed $StartLimitBurst
-     * @return Socket
-     */
-    public function setStartLimitBurst($StartLimitBurst)
-    {
-        $this->StartLimitBurst = $StartLimitBurst;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartLimitIntervalSec()
-    {
-        return $this->StartLimitIntervalSec;
-    }
-
-    /**
-     * @param mixed $StartLimitIntervalSec
-     * @return Socket
-     */
-    public function setStartLimitIntervalSec($StartLimitIntervalSec)
-    {
-        $this->StartLimitIntervalSec = $StartLimitIntervalSec;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getStartupBlockIOWeight()
     {
         return $this->StartupBlockIOWeight;
@@ -3561,78 +2811,6 @@ class Socket implements \JsonSerializable
     public function setStartupIOWeight($StartupIOWeight)
     {
         $this->StartupIOWeight = $StartupIOWeight;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestamp()
-    {
-        return $this->StateChangeTimestamp;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestamp
-     * @return Socket
-     */
-    public function setStateChangeTimestamp($StateChangeTimestamp)
-    {
-        $this->StateChangeTimestamp = $StateChangeTimestamp;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStateChangeTimestampMonotonic()
-    {
-        return $this->StateChangeTimestampMonotonic;
-    }
-
-    /**
-     * @param mixed $StateChangeTimestampMonotonic
-     * @return Socket
-     */
-    public function setStateChangeTimestampMonotonic($StateChangeTimestampMonotonic)
-    {
-        $this->StateChangeTimestampMonotonic = $StateChangeTimestampMonotonic;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStopWhenUnneeded()
-    {
-        return $this->StopWhenUnneeded;
-    }
-
-    /**
-     * @param mixed $StopWhenUnneeded
-     * @return Socket
-     */
-    public function setStopWhenUnneeded($StopWhenUnneeded)
-    {
-        $this->StopWhenUnneeded = $StopWhenUnneeded;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSubState()
-    {
-        return $this->SubState;
-    }
-
-    /**
-     * @param mixed $SubState
-     * @return Socket
-     */
-    public function setSubState($SubState)
-    {
-        $this->SubState = $SubState;
         return $this;
     }
 
@@ -3891,24 +3069,6 @@ class Socket implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getTransient()
-    {
-        return $this->Transient;
-    }
-
-    /**
-     * @param mixed $Transient
-     * @return Socket
-     */
-    public function setTransient($Transient)
-    {
-        $this->Transient = $Transient;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTransparent()
     {
         return $this->Transparent;
@@ -4102,10 +3262,5 @@ class Socket implements \JsonSerializable
     {
         $this->Writable = $Writable;
         return $this;
-    }
-
-    public function jsonSerialize()
-    {
-        return get_object_vars($this);
     }
 }
