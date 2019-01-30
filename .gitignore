@@ -1,0 +1,6 @@
+/vendor/
+index.php
+/build/
+composer.lock
+composer.phar
+cache.properties

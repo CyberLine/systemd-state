@@ -1,0 +1,26 @@
+{
+    "name": "cyberline/systemd-info",
+    "description": "PHP Systemd State Parser",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alexander Over",
+            "email": "cyberline@php.net"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "CyberLine\\SystemdState\\": "src/SystemdState"
+        }
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phploc/phploc": "*",
+        "pdepend/pdepend" : "@stable",
+        "phpmd/phpmd" : "@stable",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "2.2.0"
+    }
+}
