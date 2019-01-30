@@ -5,230 +5,230 @@ namespace CyberLine\SystemdState\Types;
 class Systemd implements \JsonSerializable
 {
     /** @var string */
-    private $Architecture;
+    protected $Architecture;
 
     /** @var boolean */
-    private $ConfirmSpawn;
+    protected $ConfirmSpawn;
 
     /** @var boolean */
-    private $DefaultBlockIOAccounting;
+    protected $DefaultBlockIOAccounting;
 
     /** @var boolean */
-    private $DefaultCPUAccounting;
+    protected $DefaultCPUAccounting;
 
-    private $DefaultLimitAS;
+    protected $DefaultLimitAS;
 
-    private $DefaultLimitASSoft;
+    protected $DefaultLimitASSoft;
 
-    private $DefaultLimitCORE;
+    protected $DefaultLimitCORE;
 
-    private $DefaultLimitCORESoft;
+    protected $DefaultLimitCORESoft;
 
-    private $DefaultLimitCPU;
+    protected $DefaultLimitCPU;
 
-    private $DefaultLimitCPUSoft;
+    protected $DefaultLimitCPUSoft;
 
-    private $DefaultLimitDATA;
+    protected $DefaultLimitDATA;
 
-    private $DefaultLimitDATASoft;
+    protected $DefaultLimitDATASoft;
 
-    private $DefaultLimitFSIZE;
+    protected $DefaultLimitFSIZE;
 
-    private $DefaultLimitFSIZESoft;
+    protected $DefaultLimitFSIZESoft;
 
-    private $DefaultLimitLOCKS;
+    protected $DefaultLimitLOCKS;
 
-    private $DefaultLimitLOCKSSoft;
+    protected $DefaultLimitLOCKSSoft;
 
-    private $DefaultLimitMEMLOCK;
+    protected $DefaultLimitMEMLOCK;
 
-    private $DefaultLimitMEMLOCKSoft;
+    protected $DefaultLimitMEMLOCKSoft;
 
-    private $DefaultLimitMSGQUEUE;
+    protected $DefaultLimitMSGQUEUE;
 
-    private $DefaultLimitMSGQUEUESoft;
+    protected $DefaultLimitMSGQUEUESoft;
 
-    private $DefaultLimitNICE;
+    protected $DefaultLimitNICE;
 
-    private $DefaultLimitNICESoft;
+    protected $DefaultLimitNICESoft;
 
-    private $DefaultLimitNOFILE;
+    protected $DefaultLimitNOFILE;
 
-    private $DefaultLimitNOFILESoft;
+    protected $DefaultLimitNOFILESoft;
 
-    private $DefaultLimitNPROC;
+    protected $DefaultLimitNPROC;
 
-    private $DefaultLimitNPROCSoft;
+    protected $DefaultLimitNPROCSoft;
 
-    private $DefaultLimitRSS;
+    protected $DefaultLimitRSS;
 
-    private $DefaultLimitRSSSoft;
+    protected $DefaultLimitRSSSoft;
 
-    private $DefaultLimitRTPRIO;
+    protected $DefaultLimitRTPRIO;
 
-    private $DefaultLimitRTPRIOSoft;
+    protected $DefaultLimitRTPRIOSoft;
 
-    private $DefaultLimitRTTIME;
+    protected $DefaultLimitRTTIME;
 
-    private $DefaultLimitRTTIMESoft;
+    protected $DefaultLimitRTTIMESoft;
 
-    private $DefaultLimitSIGPENDING;
+    protected $DefaultLimitSIGPENDING;
 
-    private $DefaultLimitSIGPENDINGSoft;
+    protected $DefaultLimitSIGPENDINGSoft;
 
-    private $DefaultLimitSTACK;
+    protected $DefaultLimitSTACK;
 
-    private $DefaultLimitSTACKSoft;
+    protected $DefaultLimitSTACKSoft;
 
     /** @var boolean */
-    private $DefaultMemoryAccounting;
+    protected $DefaultMemoryAccounting;
 
     /** @var string */
-    private $DefaultRestartUSec;
+    protected $DefaultRestartUSec;
 
     /** @var string */
-    private $DefaultStandardError;
+    protected $DefaultStandardError;
 
     /** @var string */
-    private $DefaultStandardOutput;
+    protected $DefaultStandardOutput;
 
     /** @var integer */
-    private $DefaultStartLimitBurst;
+    protected $DefaultStartLimitBurst;
 
     /** @var integer */
-    private $DefaultStartLimitIntervalSec;
+    protected $DefaultStartLimitIntervalSec;
 
     /** @var boolean */
-    private $DefaultTasksAccounting;
+    protected $DefaultTasksAccounting;
 
     /** @var integer */
-    private $DefaultTasksMax;
+    protected $DefaultTasksMax;
 
     /** @var string */
-    private $DefaultTimeoutStartUSec;
+    protected $DefaultTimeoutStartUSec;
 
     /** @var string */
-    private $DefaultTimeoutStopUSec;
+    protected $DefaultTimeoutStopUSec;
 
     /** @var string */
-    private $DefaultTimerAccuracyUSec;
+    protected $DefaultTimerAccuracyUSec;
 
     /** @var array */
-    private $Environment = [];
+    protected $Environment = [];
 
     /** @var array */
-    private $Features = [];
+    protected $Features = [];
 
     /** @var \DateTimeImmutable */
-    private $FinishTimestamp;
+    protected $FinishTimestamp;
 
     /** @var integer */
-    private $FinishTimestampMonotonic;
+    protected $FinishTimestampMonotonic;
 
     /** @var integer */
-    private $FirmwareTimestampMonotonic;
+    protected $FirmwareTimestampMonotonic;
 
     /** @var \DateTimeImmutable */
-    private $GeneratorsFinishTimestamp;
+    protected $GeneratorsFinishTimestamp;
 
     /** @var integer */
-    private $GeneratorsFinishTimestampMonotonic;
+    protected $GeneratorsFinishTimestampMonotonic;
 
     /** @var \DateTimeImmutable */
-    private $GeneratorsStartTimestamp;
+    protected $GeneratorsStartTimestamp;
 
     /** @var integer */
-    private $GeneratorsStartTimestampMonotonic;
+    protected $GeneratorsStartTimestampMonotonic;
 
     /** @var integer */
-    private $InitRDTimestampMonotonic;
+    protected $InitRDTimestampMonotonic;
 
     /** @var \DateTimeImmutable */
-    private $KernelTimestamp;
+    protected $KernelTimestamp;
 
     /** @var integer */
-    private $KernelTimestampMonotonic;
+    protected $KernelTimestampMonotonic;
 
     /** @var integer */
-    private $LoaderTimestampMonotonic;
+    protected $LoaderTimestampMonotonic;
 
     /** @var string */
-    private $LogLevel;
+    protected $LogLevel;
 
     /** @var string */
-    private $LogTarget;
+    protected $LogTarget;
 
     /** @var integer */
-    private $NFailedJobs;
+    protected $NFailedJobs;
 
     /** @var integer */
-    private $NFailedUnits;
+    protected $NFailedUnits;
 
     /** @var integer */
-    private $NInstalledJobs;
+    protected $NInstalledJobs;
 
     /** @var integer */
-    private $NJobs;
+    protected $NJobs;
 
     /** @var integer */
-    private $NNames;
+    protected $NNames;
 
     /** @var integer */
-    private $Progress;
+    protected $Progress;
 
     /** @var integer */
-    private $RuntimeWatchdogUSec;
+    protected $RuntimeWatchdogUSec;
 
     /** @var \DateTimeImmutable */
-    private $SecurityFinishTimestamp;
+    protected $SecurityFinishTimestamp;
 
     /** @var integer */
-    private $SecurityFinishTimestampMonotonic;
+    protected $SecurityFinishTimestampMonotonic;
 
     /** @var \DateTimeImmutable */
-    private $SecurityStartTimestamp;
+    protected $SecurityStartTimestamp;
 
     /** @var integer */
-    private $SecurityStartTimestampMonotonic;
+    protected $SecurityStartTimestampMonotonic;
 
     /** @var boolean */
-    private $ShowStatus;
+    protected $ShowStatus;
 
     /** @var string */
-    private $ShutdownWatchdogUSec;
+    protected $ShutdownWatchdogUSec;
 
     /** @var string */
-    private $SystemState;
+    protected $SystemState;
 
     /** @var integer */
-    private $TimerSlackNSec;
+    protected $TimerSlackNSec;
 
     /** @var array */
-    private $UnitPath = [];
+    protected $UnitPath = [];
 
     /** @var \DateTimeImmutable */
-    private $UnitsLoadFinishTimestamp;
+    protected $UnitsLoadFinishTimestamp;
 
     /** @var integer */
-    private $UnitsLoadFinishTimestampMonotonic;
+    protected $UnitsLoadFinishTimestampMonotonic;
 
     /** @var \DateTimeImmutable */
-    private $UnitsLoadStartTimestamp;
+    protected $UnitsLoadStartTimestamp;
 
     /** @var integer */
-    private $UnitsLoadStartTimestampMonotonic;
+    protected $UnitsLoadStartTimestampMonotonic;
 
     /** @var \DateTimeImmutable */
-    private $UserspaceTimestamp;
+    protected $UserspaceTimestamp;
 
     /** @var integer */
-    private $UserspaceTimestampMonotonic;
+    protected $UserspaceTimestampMonotonic;
 
     /** @var integer */
-    private $Version;
+    protected $Version;
 
     /** @var string */
-    private $Virtualization;
+    protected $Virtualization;
 
     /**
      * @return string

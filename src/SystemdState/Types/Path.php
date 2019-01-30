@@ -4,35 +4,35 @@ namespace CyberLine\SystemdState\Types;
 
 class Path extends AbstractType
 {
-    private $After = [];
+    protected $After = [];
 
-    private $Conflicts = [];
+    protected $Conflicts = [];
 
-    private $DirectoryMode;
+    protected $DirectoryMode;
 
-    private $DirectoryNotEmpty;
+    protected $DirectoryNotEmpty;
 
-    private $Documentation = [];
+    protected $Documentation = [];
 
-    private $FragmentPath;
+    protected $FragmentPath;
 
-    private $MakeDirectory;
+    protected $MakeDirectory;
 
-    private $Requires = [];
+    protected $Requires = [];
 
-    private $RequiresMountsFor = [];
+    protected $RequiresMountsFor = [];
 
-    private $Result;
+    protected $Result;
 
-    private $Triggers = [];
+    protected $Triggers = [];
 
-    private $Unit;
+    protected $Unit;
 
-    private $UnitFilePreset;
+    protected $UnitFilePreset;
 
-    private $UnitFileState;
+    protected $UnitFileState;
 
-    private $WantedBy = [];
+    protected $WantedBy = [];
 
     /**
      * @return array

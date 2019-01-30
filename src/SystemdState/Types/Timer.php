@@ -4,47 +4,47 @@ namespace CyberLine\SystemdState\Types;
 
 class Timer extends AbstractType
 {
-    private $AccuracyUSec;
+    protected $AccuracyUSec;
 
-    private $After = [];
+    protected $After = [];
 
-    private $Conflicts = [];
+    protected $Conflicts = [];
 
-    private $Documentation;
+    protected $Documentation;
 
-    private $FragmentPath;
+    protected $FragmentPath;
 
-    private $LastTriggerUSec;
+    protected $LastTriggerUSec;
 
-    private $LastTriggerUSecMonotonic;
+    protected $LastTriggerUSecMonotonic;
 
-    private $NextElapseUSecMonotonic;
+    protected $NextElapseUSecMonotonic;
 
-    private $NextElapseUSecRealtime;
+    protected $NextElapseUSecRealtime;
 
-    private $Persistent;
+    protected $Persistent;
 
-    private $RandomizedDelayUSec;
+    protected $RandomizedDelayUSec;
 
-    private $RemainAfterElapse;
+    protected $RemainAfterElapse;
 
-    private $Requires = [];
+    protected $Requires = [];
 
-    private $RequiresMountsFor = [];
+    protected $RequiresMountsFor = [];
 
-    private $Result;
+    protected $Result;
 
-    private $Triggers = [];
+    protected $Triggers = [];
 
-    private $Unit;
+    protected $Unit;
 
-    private $UnitFilePreset;
+    protected $UnitFilePreset;
 
-    private $UnitFileState;
+    protected $UnitFileState;
 
-    private $WakeSystem;
+    protected $WakeSystem;
 
-    private $WantedBy = [];
+    protected $WantedBy = [];
 
     /**
      * @return mixed

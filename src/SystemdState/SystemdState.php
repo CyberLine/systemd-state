@@ -40,6 +40,16 @@ class SystemdState
     }
 
     /**
+     * @return array
+     */
+    public function getSystemdInfo()
+    {
+        $this->addCheckUnit('');
+
+        return $this->getReport('systemd');
+    }
+
+    /**
      * @param null $unitName
      * @return array
      */

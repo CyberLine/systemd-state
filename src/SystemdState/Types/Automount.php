@@ -4,31 +4,31 @@ namespace CyberLine\SystemdState\Types;
 
 class Automount extends AbstractType
 {
-    private $After = [];
+    protected $After = [];
 
-    private $DirectoryMode;
+    protected $DirectoryMode;
 
-    private $Documentation = [];
+    protected $Documentation = [];
 
-    private $FragmentPath;
+    protected $FragmentPath;
 
-    private $Requires = [];
+    protected $Requires = [];
 
-    private $RequiresMountsFor = [];
+    protected $RequiresMountsFor = [];
 
-    private $Result;
+    protected $Result;
 
-    private $TimeoutIdleUSec;
+    protected $TimeoutIdleUSec;
 
-    private $Triggers = [];
+    protected $Triggers = [];
 
-    private $UnitFilePreset;
+    protected $UnitFilePreset;
 
-    private $UnitFileState;
+    protected $UnitFileState;
 
-    private $WantedBy = [];
+    protected $WantedBy = [];
 
-    private $Where;
+    protected $Where;
 
     /**
      * @return array

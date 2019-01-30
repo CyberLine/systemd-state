@@ -69,7 +69,8 @@ class Parser
             'BindsTo',
             'Triggers',
             'Features',
-            'UnitPath'
+            'UnitPath',
+            'BoundBy',
         ])) {
             return explode(' ', $value);
         }
@@ -96,7 +97,7 @@ class Parser
             return $execCommand;
         }
 
-        $explode = array_map('trim' ,explode(';', $matches['command']));
+        $explode = array_map('trim', explode(';', $matches['command']));
 
         foreach ($explode as $item) {
             $split = explode(' ', $item);

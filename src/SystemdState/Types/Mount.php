@@ -4,269 +4,269 @@ namespace CyberLine\SystemdState\Types;
 
 class Mount extends AbstractType
 {
-    private $After = [];
+    protected $After = [];
 
-    private $AmbientCapabilities;
+    protected $AmbientCapabilities;
 
-    private $BindsTo = [];
+    protected $BindsTo = [];
 
-    private $BlockIOAccounting;
+    protected $BlockIOAccounting;
 
-    private $BlockIOWeight;
+    protected $BlockIOWeight;
 
-    private $CPUAccounting;
+    protected $CPUAccounting;
 
-    private $CPUQuotaPerSecUSec;
+    protected $CPUQuotaPerSecUSec;
 
-    private $CPUSchedulingPolicy;
+    protected $CPUSchedulingPolicy;
 
-    private $CPUSchedulingPriority;
+    protected $CPUSchedulingPriority;
 
-    private $CPUSchedulingResetOnFork;
+    protected $CPUSchedulingResetOnFork;
 
-    private $CPUShares;
+    protected $CPUShares;
 
-    private $CPUUsageNSec;
+    protected $CPUUsageNSec;
 
-    private $CPUWeight;
+    protected $CPUWeight;
 
-    private $CapabilityBoundingSet;
+    protected $CapabilityBoundingSet;
 
-    private $Conflicts = [];
+    protected $Conflicts = [];
 
-    private $ControlGroup;
+    protected $ControlGroup;
 
-    private $ControlPID;
+    protected $ControlPID;
 
-    private $Delegate;
+    protected $Delegate;
 
-    private $DevicePolicy;
+    protected $DevicePolicy;
 
-    private $DirectoryMode;
+    protected $DirectoryMode;
 
-    private $Documentation = [];
+    protected $Documentation = [];
 
-    private $DynamicUser;
+    protected $DynamicUser;
 
-    private $ForceUnmount;
+    protected $ForceUnmount;
 
-    private $FragmentPath;
+    protected $FragmentPath;
 
-    private $GID;
+    protected $GID;
 
-    private $IOAccounting;
+    protected $IOAccounting;
 
-    private $IOScheduling;
+    protected $IOScheduling;
 
-    private $IOWeight;
+    protected $IOWeight;
 
-    private $IgnoreSIGPIPE;
+    protected $IgnoreSIGPIPE;
 
-    private $KillMode;
+    protected $KillMode;
 
-    private $KillSignal;
+    protected $KillSignal;
 
-    private $LazyUnmount;
+    protected $LazyUnmount;
 
-    private $LimitAS;
+    protected $LimitAS;
 
-    private $LimitASSoft;
+    protected $LimitASSoft;
 
-    private $LimitCORE;
+    protected $LimitCORE;
 
-    private $LimitCORESoft;
+    protected $LimitCORESoft;
 
-    private $LimitCPU;
+    protected $LimitCPU;
 
-    private $LimitCPUSoft;
+    protected $LimitCPUSoft;
 
-    private $LimitDATA;
+    protected $LimitDATA;
 
-    private $LimitDATASoft;
+    protected $LimitDATASoft;
 
-    private $LimitFSIZE;
+    protected $LimitFSIZE;
 
-    private $LimitFSIZESoft;
+    protected $LimitFSIZESoft;
 
-    private $LimitLOCKS;
+    protected $LimitLOCKS;
 
-    private $LimitLOCKSSoft;
+    protected $LimitLOCKSSoft;
 
-    private $LimitMEMLOCK;
+    protected $LimitMEMLOCK;
 
-    private $LimitMEMLOCKSoft;
+    protected $LimitMEMLOCKSoft;
 
-    private $LimitMSGQUEUE;
+    protected $LimitMSGQUEUE;
 
-    private $LimitMSGQUEUESoft;
+    protected $LimitMSGQUEUESoft;
 
-    private $LimitNICE;
+    protected $LimitNICE;
 
-    private $LimitNICESoft;
+    protected $LimitNICESoft;
 
-    private $LimitNOFILE;
+    protected $LimitNOFILE;
 
-    private $LimitNOFILESoft;
+    protected $LimitNOFILESoft;
 
-    private $LimitNPROC;
+    protected $LimitNPROC;
 
-    private $LimitNPROCSoft;
+    protected $LimitNPROCSoft;
 
-    private $LimitRSS;
+    protected $LimitRSS;
 
-    private $LimitRSSSoft;
+    protected $LimitRSSSoft;
 
-    private $LimitRTPRIO;
+    protected $LimitRTPRIO;
 
-    private $LimitRTPRIOSoft;
+    protected $LimitRTPRIOSoft;
 
-    private $LimitRTTIME;
+    protected $LimitRTTIME;
 
-    private $LimitRTTIMESoft;
+    protected $LimitRTTIMESoft;
 
-    private $LimitSIGPENDING;
+    protected $LimitSIGPENDING;
 
-    private $LimitSIGPENDINGSoft;
+    protected $LimitSIGPENDINGSoft;
 
-    private $LimitSTACK;
+    protected $LimitSTACK;
 
-    private $LimitSTACKSoft;
+    protected $LimitSTACKSoft;
 
-    private $MemoryAccounting;
+    protected $MemoryAccounting;
 
-    private $MemoryCurrent;
+    protected $MemoryCurrent;
 
-    private $MemoryDenyWriteExecute;
+    protected $MemoryDenyWriteExecute;
 
-    private $MemoryHigh;
+    protected $MemoryHigh;
 
-    private $MemoryLimit;
+    protected $MemoryLimit;
 
-    private $MemoryLow;
+    protected $MemoryLow;
 
-    private $MemoryMax;
+    protected $MemoryMax;
 
-    private $MemorySwapMax;
+    protected $MemorySwapMax;
 
-    private $MountFlags;
+    protected $MountFlags;
 
-    private $Nice;
+    protected $Nice;
 
-    private $NoNewPrivileges;
+    protected $NoNewPrivileges;
 
-    private $NonBlocking;
+    protected $NonBlocking;
 
-    private $OOMScoreAdjust;
+    protected $OOMScoreAdjust;
 
-    private $Options;
+    protected $Options;
 
-    private $PrivateDevices;
+    protected $PrivateDevices;
 
-    private $PrivateNetwork;
+    protected $PrivateNetwork;
 
-    private $PrivateTmp;
+    protected $PrivateTmp;
 
-    private $PrivateUsers;
+    protected $PrivateUsers;
 
-    private $ProtectControlGroups;
+    protected $ProtectControlGroups;
 
-    private $ProtectHome;
+    protected $ProtectHome;
 
-    private $ProtectKernelModules;
+    protected $ProtectKernelModules;
 
-    private $ProtectKernelTunables;
+    protected $ProtectKernelTunables;
 
-    private $ProtectSystem;
+    protected $ProtectSystem;
 
-    private $RemoveIPC;
+    protected $RemoveIPC;
 
-    private $RequiredBy = [];
+    protected $RequiredBy = [];
 
-    private $Requires = [];
+    protected $Requires = [];
 
-    private $RequiresMountsFor = [];
+    protected $RequiresMountsFor = [];
 
-    private $RestrictNamespace;
+    protected $RestrictNamespace;
 
-    private $RestrictRealtime;
+    protected $RestrictRealtime;
 
-    private $Result;
+    protected $Result;
 
-    private $RuntimeDirectoryMode;
+    protected $RuntimeDirectoryMode;
 
-    private $SameProcessGroup;
+    protected $SameProcessGroup;
 
-    private $SecureBits;
+    protected $SecureBits;
 
-    private $SendSIGHUP;
+    protected $SendSIGHUP;
 
-    private $SendSIGKILL;
+    protected $SendSIGKILL;
 
-    private $Slice;
+    protected $Slice;
 
-    private $SloppyOptions;
+    protected $SloppyOptions;
 
-    private $SourcePath;
+    protected $SourcePath;
 
-    private $StandardError;
+    protected $StandardError;
 
-    private $StandardInput;
+    protected $StandardInput;
 
-    private $StandardOutput;
+    protected $StandardOutput;
 
-    private $StartupBlockIOWeight;
+    protected $StartupBlockIOWeight;
 
-    private $StartupCPUShares;
+    protected $StartupCPUShares;
 
-    private $StartupCPUWeight;
+    protected $StartupCPUWeight;
 
-    private $StartupIOWeight;
+    protected $StartupIOWeight;
 
-    private $SyslogFacility;
+    protected $SyslogFacility;
 
-    private $SyslogLevel;
+    protected $SyslogLevel;
 
-    private $SyslogLevelPrefix;
+    protected $SyslogLevelPrefix;
 
-    private $SyslogPriority;
+    protected $SyslogPriority;
 
-    private $SystemCallErrorNumber;
+    protected $SystemCallErrorNumber;
 
-    private $TTYReset;
+    protected $TTYReset;
 
-    private $TTYVHangup;
+    protected $TTYVHangup;
 
-    private $TTYVTDisallocate;
+    protected $TTYVTDisallocate;
 
-    private $TasksAccounting;
+    protected $TasksAccounting;
 
-    private $TasksCurrent;
+    protected $TasksCurrent;
 
-    private $TasksMax;
+    protected $TasksMax;
 
-    private $TimeoutUSec;
+    protected $TimeoutUSec;
 
-    private $TimerSlackNSec;
+    protected $TimerSlackNSec;
 
-    private $TriggeredBy;
+    protected $TriggeredBy;
 
-    private $Type;
+    protected $Type;
 
-    private $UID;
+    protected $UID;
 
-    private $UMask;
+    protected $UMask;
 
-    private $UnitFilePreset;
+    protected $UnitFilePreset;
 
-    private $UnitFileState;
+    protected $UnitFileState;
 
-    private $UtmpMode;
+    protected $UtmpMode;
 
-    private $WantedBy = [];
+    protected $WantedBy = [];
 
-    private $What;
+    protected $What;
 
-    private $Where;
+    protected $Where;
 
     /**
      * @return array

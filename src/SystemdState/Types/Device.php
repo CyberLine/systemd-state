@@ -4,41 +4,43 @@ namespace CyberLine\SystemdState\Types;
 
 class Device extends AbstractType
 {
-    private $BoundBy;
+    /** @var array */
+    protected $BoundBy = [];
 
-    private $SysFSPath;
+    /** @var string */
+    protected $SysFSPath;
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getBoundBy()
+    public function getBoundBy(): array
     {
         return $this->BoundBy;
     }
 
     /**
-     * @param mixed $BoundBy
+     * @param array $BoundBy
      * @return Device
      */
-    public function setBoundBy($BoundBy)
+    public function setBoundBy(array $BoundBy): Device
     {
         $this->BoundBy = $BoundBy;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getSysFSPath()
+    public function getSysFSPath(): string
     {
         return $this->SysFSPath;
     }
 
     /**
-     * @param mixed $SysFSPath
+     * @param string $SysFSPath
      * @return Device
      */
-    public function setSysFSPath($SysFSPath)
+    public function setSysFSPath(string $SysFSPath): Device
     {
         $this->SysFSPath = $SysFSPath;
         return $this;

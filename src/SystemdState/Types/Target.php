@@ -4,29 +4,29 @@ namespace CyberLine\SystemdState\Types;
 
 class Target extends AbstractType
 {
-    private $After = [];
+    protected $After = [];
 
-    private $Conflicts = [];
+    protected $Conflicts = [];
 
-    private $Documentation = [];
+    protected $Documentation = [];
 
-    private $FragmentPath;
+    protected $FragmentPath;
 
-    private $OnFailure;
+    protected $OnFailure;
 
-    private $RequiredBy = [];
+    protected $RequiredBy = [];
 
-    private $Requires = [];
+    protected $Requires = [];
 
-    private $RequiresMountsFor = [];
+    protected $RequiresMountsFor = [];
 
-    private $UnitFilePreset;
+    protected $UnitFilePreset;
 
-    private $UnitFileState;
+    protected $UnitFileState;
 
-    private $WantedBy = [];
+    protected $WantedBy = [];
 
-    private $Wants = [];
+    protected $Wants = [];
 
     /**
      * @return array

@@ -4,85 +4,85 @@ namespace CyberLine\SystemdState\Types;
 
 class Scope extends AbstractType
 {
-    private $After = [];
+    protected $After = [];
 
-    private $BlockIOAccounting;
+    protected $BlockIOAccounting;
 
-    private $BlockIOWeight;
+    protected $BlockIOWeight;
 
-    private $CPUAccounting;
+    protected $CPUAccounting;
 
-    private $CPUQuotaPerSecUSec;
+    protected $CPUQuotaPerSecUSec;
 
-    private $CPUShares;
+    protected $CPUShares;
 
-    private $CPUUsageNSec;
+    protected $CPUUsageNSec;
 
-    private $CPUWeight;
+    protected $CPUWeight;
 
-    private $Conflicts = [];
+    protected $Conflicts = [];
 
-    private $ControlGroup;
+    protected $ControlGroup;
 
-    private $Delegate;
+    protected $Delegate;
 
-    private $DevicePolicy;
+    protected $DevicePolicy;
 
-    private $Documentation;
+    protected $Documentation;
 
-    private $FragmentPath;
+    protected $FragmentPath;
 
-    private $IOAccounting;
+    protected $IOAccounting;
 
-    private $IOWeight;
+    protected $IOWeight;
 
-    private $KillMode;
+    protected $KillMode;
 
-    private $KillSignal;
+    protected $KillSignal;
 
-    private $MemoryAccounting;
+    protected $MemoryAccounting;
 
-    private $MemoryCurrent;
+    protected $MemoryCurrent;
 
-    private $MemoryHigh;
+    protected $MemoryHigh;
 
-    private $MemoryLimit;
+    protected $MemoryLimit;
 
-    private $MemoryLow;
+    protected $MemoryLow;
 
-    private $MemoryMax;
+    protected $MemoryMax;
 
-    private $MemorySwapMax;
+    protected $MemorySwapMax;
 
-    private $Requires = [];
+    protected $Requires = [];
 
-    private $Result;
+    protected $Result;
 
-    private $SendSIGHUP;
+    protected $SendSIGHUP;
 
-    private $SendSIGKILL;
+    protected $SendSIGKILL;
 
-    private $Slice;
+    protected $Slice;
 
-    private $StartupBlockIOWeight;
+    protected $StartupBlockIOWeight;
 
-    private $StartupCPUShares;
+    protected $StartupCPUShares;
 
-    private $StartupCPUWeight;
+    protected $StartupCPUWeight;
 
-    private $StartupIOWeight;
+    protected $StartupIOWeight;
 
-    private $TasksAccounting;
+    protected $TasksAccounting;
 
-    private $TasksCurrent;
+    protected $TasksCurrent;
 
-    private $TasksMax;
+    protected $TasksMax;
 
-    private $TimeoutStopUSec;
+    protected $TimeoutStopUSec;
 
-    private $UnitFilePreset;
+    protected $UnitFilePreset;
 
-    private $UnitFileState;
+    protected $UnitFileState;
 
     /**
      * @return array

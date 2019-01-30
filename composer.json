@@ -1,5 +1,5 @@
 {
-    "name": "cyberline/systemd-info",
+    "name": "cyberline/systemd-state",
     "description": "PHP Systemd State Parser",
     "type": "library",
     "authors": [
@@ -21,6 +21,6 @@
         "pdepend/pdepend" : "@stable",
         "phpmd/phpmd" : "@stable",
         "sebastian/phpcpd": "*",
-        "squizlabs/php_codesniffer": "2.2.0"
+        "squizlabs/php_codesniffer": "@stable"
     }
 }
