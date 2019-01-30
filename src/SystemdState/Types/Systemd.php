@@ -172,8 +172,7 @@ class Systemd implements \JsonSerializable
 
     /** @var integer */
     protected $NNames;
-
-    /** @var integer */
+    
     protected $Progress;
 
     /** @var integer */
@@ -1437,23 +1436,23 @@ class Systemd implements \JsonSerializable
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getProgress(): int
+    public function getProgress()
     {
         return $this->Progress;
     }
 
     /**
-     * @param int $Progress
+     * @param mixed $Progress
      * @return Systemd
      */
-    public function setProgress(int $Progress): Systemd
+    public function setProgress($Progress)
     {
         $this->Progress = $Progress;
         return $this;
     }
-
+    
     /**
      * @return int
      */

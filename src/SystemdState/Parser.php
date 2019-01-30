@@ -48,7 +48,7 @@ class Parser
         }
 
         if (preg_match('/Timestamp$/', $key)) {
-            return \date_create_immutable_from_format('D Y-m-d H:i:s e', $value);
+            return \date_create_immutable_from_format('* Y-m-d H:i:s e', $value);
         }
 
         if (in_array($key, [

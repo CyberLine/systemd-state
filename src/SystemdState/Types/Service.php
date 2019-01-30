@@ -35,6 +35,8 @@ class Service extends AbstractType
     protected $CPUWeight;
 
     protected $CapabilityBoundingSet;
+    
+    protected $ConflictedBy = [];
 
     protected $Conflicts = [];
 
@@ -101,6 +103,8 @@ class Service extends AbstractType
     protected $IOScheduling;
 
     protected $IOWeight;
+
+    protected $IgnoreOnSnapshot;
 
     protected $IgnoreSIGPIPE;
 
@@ -249,6 +253,8 @@ class Service extends AbstractType
     protected $Requires = [];
 
     protected $RequiresMountsFor = [];
+
+    protected $Requisite;
 
     protected $RequisiteOf;
 
@@ -649,6 +655,24 @@ class Service extends AbstractType
     public function setCapabilityBoundingSet($CapabilityBoundingSet)
     {
         $this->CapabilityBoundingSet = $CapabilityBoundingSet;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConflictedBy(): array
+    {
+        return $this->ConflictedBy;
+    }
+
+    /**
+     * @param array $ConflictedBy
+     * @return Service
+     */
+    public function setConflictedBy(array $ConflictedBy): Service
+    {
+        $this->ConflictedBy = $ConflictedBy;
         return $this;
     }
 
@@ -1225,6 +1249,24 @@ class Service extends AbstractType
     public function setIOScheduling($IOScheduling)
     {
         $this->IOScheduling = $IOScheduling;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIgnoreOnSnapshot()
+    {
+        return $this->IgnoreOnSnapshot;
+    }
+
+    /**
+     * @param mixed $IgnoreOnSnapshot
+     * @return Service
+     */
+    public function setIgnoreOnSnapshot($IgnoreOnSnapshot)
+    {
+        $this->IgnoreOnSnapshot = $IgnoreOnSnapshot;
         return $this;
     }
 
@@ -2575,6 +2617,24 @@ class Service extends AbstractType
     public function setRequiresMountsFor(array $RequiresMountsFor): Service
     {
         $this->RequiresMountsFor = $RequiresMountsFor;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequisite()
+    {
+        return $this->Requisite;
+    }
+
+    /**
+     * @param mixed $Requisite
+     * @return Service
+     */
+    public function setRequisite($Requisite)
+    {
+        $this->Requisite = $Requisite;
         return $this;
     }
 
