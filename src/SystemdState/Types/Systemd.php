@@ -96,12 +96,14 @@ class Systemd implements \JsonSerializable
     protected $DefaultStartLimitBurst;
 
     /** @var integer */
+    protected $DefaultStartLimitInterval;
+
+    /** @var integer */
     protected $DefaultStartLimitIntervalSec;
 
     /** @var boolean */
     protected $DefaultTasksAccounting;
 
-    /** @var integer */
     protected $DefaultTasksMax;
 
     /** @var string */
@@ -970,6 +972,24 @@ class Systemd implements \JsonSerializable
     /**
      * @return int
      */
+    public function getDefaultStartLimitInterval(): int
+    {
+        return $this->DefaultStartLimitInterval;
+    }
+
+    /**
+     * @param int $DefaultStartLimitInterval
+     * @return Systemd
+     */
+    public function setDefaultStartLimitInterval(int $DefaultStartLimitInterval): Systemd
+    {
+        $this->DefaultStartLimitInterval = $DefaultStartLimitInterval;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
     public function getDefaultStartLimitIntervalSec(): int
     {
         return $this->DefaultStartLimitIntervalSec;
@@ -1004,18 +1024,18 @@ class Systemd implements \JsonSerializable
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getDefaultTasksMax(): int
+    public function getDefaultTasksMax()
     {
         return $this->DefaultTasksMax;
     }
 
     /**
-     * @param int $DefaultTasksMax
+     * @param mixed $DefaultTasksMax
      * @return Systemd
      */
-    public function setDefaultTasksMax(int $DefaultTasksMax): Systemd
+    public function setDefaultTasksMax($DefaultTasksMax)
     {
         $this->DefaultTasksMax = $DefaultTasksMax;
         return $this;

@@ -12,6 +12,8 @@ class Socket extends AbstractType
 
     protected $Backlog;
 
+    protected $BindsTo = [];
+
     protected $BindIPv6Only;
 
     protected $BlockIOAccounting;
@@ -159,6 +161,8 @@ class Socket extends AbstractType
     protected $ListenNetlink;
 
     protected $ListenSequentialPacket;
+
+    protected $ListenSpecial;
 
     protected $ListenStream;
 
@@ -312,6 +316,8 @@ class Socket extends AbstractType
 
     protected $TriggerLimitBurst;
 
+    protected $TriggerLimitIntervalSec;
+
     protected $TriggerLimitIntervalUSec;
 
     protected $Triggers = [];
@@ -399,6 +405,24 @@ class Socket extends AbstractType
     public function setBacklog($Backlog)
     {
         $this->Backlog = $Backlog;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBindsTo(): array
+    {
+        return $this->BindsTo;
+    }
+
+    /**
+     * @param array $BindsTo
+     * @return Socket
+     */
+    public function setBindsTo(array $BindsTo): Socket
+    {
+        $this->BindsTo = $BindsTo;
         return $this;
     }
 
@@ -1731,6 +1755,24 @@ class Socket extends AbstractType
     public function setListenSequentialPacket($ListenSequentialPacket)
     {
         $this->ListenSequentialPacket = $ListenSequentialPacket;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getListenSpecial()
+    {
+        return $this->ListenSpecial;
+    }
+
+    /**
+     * @param mixed $ListenSpecial
+     * @return Socket
+     */
+    public function setListenSpecial($ListenSpecial)
+    {
+        $this->ListenSpecial = $ListenSpecial;
         return $this;
     }
 
@@ -3099,6 +3141,24 @@ class Socket extends AbstractType
     public function setTriggerLimitBurst($TriggerLimitBurst)
     {
         $this->TriggerLimitBurst = $TriggerLimitBurst;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTriggerLimitIntervalSec()
+    {
+        return $this->TriggerLimitIntervalSec;
+    }
+
+    /**
+     * @param mixed $TriggerLimitIntervalSec
+     * @return Socket
+     */
+    public function setTriggerLimitIntervalSec($TriggerLimitIntervalSec)
+    {
+        $this->TriggerLimitIntervalSec = $TriggerLimitIntervalSec;
         return $this;
     }
 

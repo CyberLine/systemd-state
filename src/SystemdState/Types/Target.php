@@ -10,6 +10,8 @@ class Target extends AbstractType
 
     protected $Documentation = [];
 
+    protected $DropInPaths = [];
+
     protected $FragmentPath;
 
     protected $OnFailure;
@@ -19,6 +21,8 @@ class Target extends AbstractType
     protected $Requires = [];
 
     protected $RequiresMountsFor = [];
+
+    protected $SourcePath;
 
     protected $UnitFilePreset;
 
@@ -79,6 +83,24 @@ class Target extends AbstractType
     public function setDocumentation(array $Documentation): Target
     {
         $this->Documentation = $Documentation;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDropInPaths(): array
+    {
+        return $this->DropInPaths;
+    }
+
+    /**
+     * @param array $DropInPaths
+     * @return Target
+     */
+    public function setDropInPaths(array $DropInPaths): Target
+    {
+        $this->DropInPaths = $DropInPaths;
         return $this;
     }
 
@@ -169,6 +191,24 @@ class Target extends AbstractType
     public function setRequiresMountsFor(array $RequiresMountsFor): Target
     {
         $this->RequiresMountsFor = $RequiresMountsFor;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSourcePath()
+    {
+        return $this->SourcePath;
+    }
+
+    /**
+     * @param mixed $SourcePath
+     * @return Target
+     */
+    public function setSourcePath($SourcePath)
+    {
+        $this->SourcePath = $SourcePath;
         return $this;
     }
 

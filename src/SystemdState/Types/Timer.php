@@ -6,6 +6,8 @@ class Timer extends AbstractType
 {
     protected $AccuracyUSec;
 
+    protected $ActiveExitTimestamp;
+
     protected $After = [];
 
     protected $Conflicts = [];
@@ -13,6 +15,8 @@ class Timer extends AbstractType
     protected $Documentation;
 
     protected $FragmentPath;
+
+    protected $InactiveEnterTimestamp;
 
     protected $LastTriggerUSec;
 
@@ -61,6 +65,24 @@ class Timer extends AbstractType
     public function setAccuracyUSec($AccuracyUSec)
     {
         $this->AccuracyUSec = $AccuracyUSec;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActiveExitTimestamp()
+    {
+        return $this->ActiveExitTimestamp;
+    }
+
+    /**
+     * @param mixed $ActiveExitTimestamp
+     * @return Timer
+     */
+    public function setActiveExitTimestamp($ActiveExitTimestamp)
+    {
+        $this->ActiveExitTimestamp = $ActiveExitTimestamp;
         return $this;
     }
 
@@ -133,6 +155,24 @@ class Timer extends AbstractType
     public function setFragmentPath($FragmentPath)
     {
         $this->FragmentPath = $FragmentPath;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInactiveEnterTimestamp()
+    {
+        return $this->InactiveEnterTimestamp;
+    }
+
+    /**
+     * @param mixed $InactiveEnterTimestamp
+     * @return Timer
+     */
+    public function setInactiveEnterTimestamp($InactiveEnterTimestamp)
+    {
+        $this->InactiveEnterTimestamp = $InactiveEnterTimestamp;
         return $this;
     }
 

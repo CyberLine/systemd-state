@@ -18,6 +18,8 @@ class Path extends AbstractType
 
     protected $MakeDirectory;
 
+    protected $PathChanged;
+
     protected $Requires = [];
 
     protected $RequiresMountsFor = [];
@@ -157,6 +159,24 @@ class Path extends AbstractType
     public function setMakeDirectory($MakeDirectory)
     {
         $this->MakeDirectory = $MakeDirectory;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPathChanged()
+    {
+        return $this->PathChanged;
+    }
+
+    /**
+     * @param mixed $PathChanged
+     * @return Path
+     */
+    public function setPathChanged($PathChanged)
+    {
+        $this->PathChanged = $PathChanged;
         return $this;
     }
 

@@ -30,6 +30,8 @@ class Scope extends AbstractType
 
     protected $Documentation;
 
+    protected $DropInPaths = [];
+
     protected $FragmentPath;
 
     protected $IOAccounting;
@@ -297,6 +299,24 @@ class Scope extends AbstractType
     public function setDevicePolicy($DevicePolicy)
     {
         $this->DevicePolicy = $DevicePolicy;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDropInPaths(): array
+    {
+        return $this->DropInPaths;
+    }
+
+    /**
+     * @param array $DropInPaths
+     * @return Scope
+     */
+    public function setDropInPaths(array $DropInPaths): Scope
+    {
+        $this->DropInPaths = $DropInPaths;
         return $this;
     }
 

@@ -10,6 +10,8 @@ class Device extends AbstractType
     /** @var string */
     protected $SysFSPath;
 
+    protected $Wants = [];
+
     /**
      * @return array
      */
@@ -43,6 +45,24 @@ class Device extends AbstractType
     public function setSysFSPath(string $SysFSPath): Device
     {
         $this->SysFSPath = $SysFSPath;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getWants(): array
+    {
+        return $this->Wants;
+    }
+
+    /**
+     * @param array $Wants
+     * @return Device
+     */
+    public function setWants(array $Wants): Device
+    {
+        $this->Wants = $Wants;
         return $this;
     }
 }

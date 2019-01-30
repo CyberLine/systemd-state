@@ -264,6 +264,8 @@ class Mount extends AbstractType
 
     protected $WantedBy = [];
 
+    protected $Wants = [];
+
     protected $What;
 
     protected $Where;
@@ -2605,6 +2607,24 @@ class Mount extends AbstractType
     public function setWantedBy(array $WantedBy): Mount
     {
         $this->WantedBy = $WantedBy;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getWants(): array
+    {
+        return $this->Wants;
+    }
+
+    /**
+     * @param array $Wants
+     * @return Mount
+     */
+    public function setWants(array $Wants): Mount
+    {
+        $this->Wants = $Wants;
         return $this;
     }
 

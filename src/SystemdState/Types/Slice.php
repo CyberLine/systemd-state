@@ -30,6 +30,8 @@ class Slice extends AbstractType
 
     protected $Documentation = [];
 
+    protected $DropInPaths = [];
+
     protected $FragmentPath;
 
     protected $IOAccounting;
@@ -289,6 +291,24 @@ class Slice extends AbstractType
     public function setDevicePolicy($DevicePolicy)
     {
         $this->DevicePolicy = $DevicePolicy;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDropInPaths(): array
+    {
+        return $this->DropInPaths;
+    }
+
+    /**
+     * @param array $DropInPaths
+     * @return Slice
+     */
+    public function setDropInPaths(array $DropInPaths): Slice
+    {
+        $this->DropInPaths = $DropInPaths;
         return $this;
     }
 
