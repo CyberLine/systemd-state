@@ -8,7 +8,7 @@
             "email": "cyberline@php.net"
         }
     ],
-    "autoload-dev": {
+    "autoload": {
         "psr-4": {
             "CyberLine\\SystemdState\\": "src/SystemdState"
         }

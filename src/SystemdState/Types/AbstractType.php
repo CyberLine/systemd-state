@@ -76,9 +76,7 @@ abstract class AbstractType implements \JsonSerializable
     /** @var \DateTimeImmutable */
     protected $InactiveExitTimestamp;
 
-    /**
-     * @var integer
-     */
+    /** @var integer */
     protected $InactiveExitTimestampMonotonic;
 
     /** @var string */
@@ -119,6 +117,9 @@ abstract class AbstractType implements \JsonSerializable
 
     /** @var boolean */
     protected $StartLimitBurst;
+
+    /** @var integer */
+    protected $StartLimitInterval;
 
     /** @var integer */
     protected $StartLimitIntervalSec;
@@ -783,6 +784,24 @@ abstract class AbstractType implements \JsonSerializable
     public function setStartLimitBurst(bool $StartLimitBurst): AbstractType
     {
         $this->StartLimitBurst = $StartLimitBurst;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStartLimitInterval(): int
+    {
+        return $this->StartLimitInterval;
+    }
+
+    /**
+     * @param int $StartLimitInterval
+     * @return AbstractType
+     */
+    public function setStartLimitInterval(int $StartLimitInterval): AbstractType
+    {
+        $this->StartLimitInterval = $StartLimitInterval;
         return $this;
     }
 
