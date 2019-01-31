@@ -142,6 +142,9 @@ class Systemd implements \JsonSerializable
     /** @var integer */
     protected $GeneratorsStartTimestampMonotonic;
 
+    /** @var \DateTimeImmutable */
+    protected $InitRDTimestamp;
+
     /** @var integer */
     protected $InitRDTimestampMonotonic;
 
@@ -1254,6 +1257,24 @@ class Systemd implements \JsonSerializable
     public function setGeneratorsStartTimestampMonotonic(int $GeneratorsStartTimestampMonotonic): Systemd
     {
         $this->GeneratorsStartTimestampMonotonic = $GeneratorsStartTimestampMonotonic;
+        return $this;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getInitRDTimestamp(): \DateTimeImmutable
+    {
+        return $this->InitRDTimestamp;
+    }
+
+    /**
+     * @param \DateTimeImmutable $InitRDTimestamp
+     * @return Systemd
+     */
+    public function setInitRDTimestamp(\DateTimeImmutable $InitRDTimestamp): Systemd
+    {
+        $this->InitRDTimestamp = $InitRDTimestamp;
         return $this;
     }
 

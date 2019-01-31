@@ -4,7 +4,7 @@ namespace CyberLine\SystemdState;
 
 class SystemdState
 {
-    private static $command = '/bin/systemctl show %s --no-page';
+    private static $command = '/bin/systemctl show %s --no-pager';
 
     private $services = [];
 

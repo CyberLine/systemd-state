@@ -60,6 +60,7 @@ class Parser
             'Names',
             'Wants',
             'RequiredBy',
+            'RequiredByOverridable',
             'RequiresMountsFor',
             'ReadWritePaths',
             'ReadOnlyPaths',

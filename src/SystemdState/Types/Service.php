@@ -16,6 +16,8 @@ class Service extends AbstractType
 
     protected $BlockIOWeight;
 
+    protected $BoundBy = [];
+
     protected $BusName;
 
     protected $CPUAccounting;
@@ -250,6 +252,8 @@ class Service extends AbstractType
 
     protected $RequiredBy = [];
 
+    protected $RequiredByOverridable = [];
+
     protected $Requires = [];
 
     protected $RequiresMountsFor = [];
@@ -475,6 +479,24 @@ class Service extends AbstractType
     public function setBlockIOWeight($BlockIOWeight)
     {
         $this->BlockIOWeight = $BlockIOWeight;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBoundBy(): array
+    {
+        return $this->BoundBy;
+    }
+
+    /**
+     * @param array $BoundBy
+     * @return Service
+     */
+    public function setBoundBy(array $BoundBy): Service
+    {
+        $this->BoundBy = $BoundBy;
         return $this;
     }
 
@@ -2581,6 +2603,24 @@ class Service extends AbstractType
     public function setRequiredBy(array $RequiredBy): Service
     {
         $this->RequiredBy = $RequiredBy;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRequiredByOverridable(): array
+    {
+        return $this->RequiredByOverridable;
+    }
+
+    /**
+     * @param array $RequiredByOverridable
+     * @return Service
+     */
+    public function setRequiredByOverridable(array $RequiredByOverridable): Service
+    {
+        $this->RequiredByOverridable = $RequiredByOverridable;
         return $this;
     }
 
