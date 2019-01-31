@@ -2,6 +2,9 @@
     "name": "cyberline/systemd-state",
     "description": "PHP Systemd State Parser",
     "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/CyberLine/systemd-state",
+    "readme": "README.md",
     "authors": [
         {
             "name": "Alexander Over",
