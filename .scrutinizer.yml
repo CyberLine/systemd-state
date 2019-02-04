@@ -1,7 +1,20 @@
 before_commands:
     - "composer install --prefer-source"
 
+filter:
+    paths: ["src/*"]
+    excluded_paths:
+        - "tests/"
+        - "build/"
+    dependency_paths:
+        - vendor/
+
 build:
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - php-scrutinizer-run
     tests:
         override:
             -
