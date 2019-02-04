@@ -3,7 +3,7 @@
 <project name="systemdInfo" default="build">
 
     <target name="build"
-            depends="prepare,composerget,composer,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd"/>
+            depends="prepare,composerget,composer,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpunit,phpcpd"/>
 
     <target name="build-parallel"
             depends="prepare,composerget,composer,lint,tools-parallel"/>
@@ -15,6 +15,7 @@
                 <antcall target="phpmd-ci"/>
                 <antcall target="compress"/>
             </sequential>
+            <antcall target="phpunit"/>
             <antcall target="phpcpd"/>
             <antcall target="phpcs-ci"/>
             <antcall target="phploc"/>
@@ -113,6 +114,13 @@
             <arg value="--standard=PSR2" />
             <arg value="--extensions=php" />
             <arg path="${basedir}/src" />
+        </exec>
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="vendor/bin/phpunit" failonerror="true">
+            <arg value="--coverage-clover" />
+            <arg value="${basedir}/build/logs/clover.xml" />
         </exec>
     </target>
 

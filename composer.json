@@ -24,6 +24,7 @@
         "pdepend/pdepend" : "@stable",
         "phpmd/phpmd" : "@stable",
         "sebastian/phpcpd": "*",
-        "squizlabs/php_codesniffer": "@stable"
+        "squizlabs/php_codesniffer": "@stable",
+        "phpunit/phpunit": "^7"
     }
 }
