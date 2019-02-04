@@ -55,7 +55,7 @@ class SystemdState
      */
     public function getReport($unitName = null): array
     {
-        if (!$this->reports) {
+        if (empty($this->reports)) {
             $this->checkState();
         }
 
@@ -122,7 +122,7 @@ class SystemdState
         $split = explode(PHP_EOL, $service);
 
         preg_match('/Id=(?<name>.*)/m', $service, $matches);
-        if (!$matches) {
+        if (empty($matches)) {
             $type = 'Systemd';
         } else {
             $explode = explode('.', $matches['name']);
