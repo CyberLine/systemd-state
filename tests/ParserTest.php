@@ -12,7 +12,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
     {
         $dateTime = \date_create_immutable_from_format('* Y-m-d H:i:s e', time());
 
-        return [
+        $testCases = [
             [['test', 'yes'], true],
             [['test', 'no'], false],
             [['test', '0'], 0],
@@ -20,10 +20,16 @@ class ParserTest extends \PHPUnit\Framework\TestCase
             [['test', '0123'], '0123'],
             [['test', '1234'], 1234],
             [['test', '18446744073709551615'], '18446744073709551615'],
-            [['After', 'test1 test2'], ['test1', 'test2']],
             [['Timestamp', (string)$dateTime], $dateTime],
             [['Environment', 'FOO=bar BAZ=foo'], ['FOO' => 'bar', 'BAZ' => 'foo']],
         ];
+
+        // To cover codecoverage
+        foreach (Parser::getArrayTypes() as $arrayType) {
+            $testCases[] = [[$arrayType, 'test1 test2'], ['test1', 'test2']];
+        }
+
+        return $testCases;
     }
 
     /**

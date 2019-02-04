@@ -6,6 +6,38 @@ use CyberLine\SystemdState\Model\ExecCommand;
 
 class Parser
 {
+    private static $arrayTypes = [
+        'After',
+        'Before',
+        'Requires',
+        'Conflicts',
+        'WantedBy',
+        'Names',
+        'Wants',
+        'RequiredBy',
+        'RequiredByOverridable',
+        'RequiresMountsFor',
+        'ReadWritePaths',
+        'ReadOnlyPaths',
+        'DropInPaths',
+        'ConflictedBy',
+        'Documentation',
+        'BindsTo',
+        'Triggers',
+        'Features',
+        'UnitPath',
+        'BoundBy',
+    ];
+
+    private static $execTypes = [
+        'ExecReload',
+        'ExecStartPre',
+        'ExecStart',
+        'ExecStartPost',
+        'ExecStop',
+        'ExecStopPost',
+    ];
+
     /**
      * @param array $values
      * @return array|bool|ExecCommand|\DateTimeImmutable|int|mixed|null
@@ -35,14 +67,7 @@ class Parser
             return self::parseEnvironmentLine($values);
         }
 
-        if (in_array($key, [
-            'ExecReload',
-            'ExecStartPre',
-            'ExecStart',
-            'ExecStartPost',
-            'ExecStop',
-            'ExecStopPost',
-        ])) {
+        if (in_array($key, self::$execTypes)) {
             array_shift($values);
             return self::parseExecLine(implode(' ', $values));
         }
@@ -51,28 +76,7 @@ class Parser
             return \date_create_immutable_from_format('* Y-m-d H:i:s e', $value);
         }
 
-        if (in_array($key, [
-            'After',
-            'Before',
-            'Requires',
-            'Conflicts',
-            'WantedBy',
-            'Names',
-            'Wants',
-            'RequiredBy',
-            'RequiredByOverridable',
-            'RequiresMountsFor',
-            'ReadWritePaths',
-            'ReadOnlyPaths',
-            'DropInPaths',
-            'ConflictedBy',
-            'Documentation',
-            'BindsTo',
-            'Triggers',
-            'Features',
-            'UnitPath',
-            'BoundBy',
-        ])) {
+        if (in_array($key, self::$arrayTypes)) {
             return explode(' ', $value);
         }
 
@@ -172,5 +176,25 @@ class Parser
         }
 
         return $environments;
+    }
+
+    /**
+     * Used by PHPUnit
+     *
+     * @return array
+     */
+    public static function getArrayTypes(): array
+    {
+        return self::$arrayTypes;
+    }
+
+    /**
+     * Used by PHPUnit
+     *
+     * @return array
+     */
+    public static function getExecTypes(): array
+    {
+        return self::$execTypes;
     }
 }
