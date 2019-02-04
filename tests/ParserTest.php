@@ -10,6 +10,8 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      */
     public function dpParseValueByContent()
     {
+        $dateTime = \date_create_immutable_from_format('* Y-m-d H:i:s e', time());
+
         return [
             [['test', 'yes'], true],
             [['test', 'no'], false],
@@ -19,10 +21,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
             [['test', '1234'], 1234],
             [['test', '18446744073709551615'], '18446744073709551615'],
             [['After', 'test1 test2'], ['test1', 'test2']],
-            [
-                ['Timestamp', 'Do 2019-02-04 12:00:00 CET'],
-                date_create_immutable_from_format('* Y-m-d H:i:s e', 'Do 2019-02-04 12:00:00 CET')
-            ],
+            [['Timestamp', (string)$dateTime], $dateTime],
             [['Environment', 'FOO=bar BAZ=foo'], ['FOO' => 'bar', 'BAZ' => 'foo']],
         ];
     }
