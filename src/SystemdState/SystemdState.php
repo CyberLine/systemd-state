@@ -121,7 +121,7 @@ class SystemdState
         }
 
         $className = __NAMESPACE__ . '\\Types\\' . ucfirst($type);
-        /** @var AbstractType $class */
+        /** @var AbstractType $type */
         $type = new $className();
 
         array_walk($split, [$this, 'handleLine'], $type);
