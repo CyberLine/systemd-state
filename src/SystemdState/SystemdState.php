@@ -2,6 +2,9 @@
 
 namespace CyberLine\SystemdState;
 
+use CyberLine\SystemdState\Types\AbstractType;
+use CyberLine\SystemdState\Types\TypesInterface;
+
 class SystemdState
 {
     private static $command = '/bin/systemctl show %s --no-pager';
@@ -16,9 +19,7 @@ class SystemdState
      */
     public function __construct(array $services = [])
     {
-        foreach ($services as $service) {
-            $this->addCheckUnit($service);
-        }
+        array_walk($services, [$this, 'addCheckUnit']);
     }
 
     /**
@@ -50,10 +51,10 @@ class SystemdState
     }
 
     /**
-     * @param null $unitName
+     * @param string|null $unitName
      * @return array
      */
-    public function getReport($unitName = null): array
+    public function getReport(?string $unitName = null): array
     {
         if (empty($this->reports)) {
             $this->checkState();
@@ -68,22 +69,11 @@ class SystemdState
         }
 
         $retval = [];
-        foreach ([
-             'service',
-             'target',
-             'timer',
-             'slice',
-             'socket',
-             'path',
-             'device',
-             'mount',
-             'automount',
-             'scope',
-             'swap',
-         ] as $suffix) {
+        foreach (TypesInterface::ALLOWED_TYPES as $suffix) {
             $tempName = $unitName . '.' . $suffix;
             if (array_key_exists($tempName, $this->reports)) {
                 $retval[$tempName] = $this->reports[$tempName];
+                // Don't break here, as we can have the same unit in different types (e.g. service and timer)
             }
         }
 
@@ -94,7 +84,7 @@ class SystemdState
         throw new \RangeException(sprintf('No report found for `%s`. Maybe misspelled?', $unitName));
     }
 
-    private function checkState()
+    private function checkState(): void
     {
         if (!count($this->services)) {
             throw new \InvalidArgumentException('You have to add at least one unit to check!');
@@ -107,40 +97,61 @@ class SystemdState
             throw new \RuntimeException(sprintf('There was an error executing the command: `%s`', $command));
         }
 
-        $services = explode(PHP_EOL . PHP_EOL, $exec);
-
-        foreach ($services as $service) {
-            $this->handleServiceResponse($service);
-        }
+        $explode = explode(PHP_EOL . PHP_EOL, $exec);
+        array_walk($explode, [$this, 'handleServiceResponse']);
     }
 
     /**
      * @param string $service
      */
-    private function handleServiceResponse(string $service)
+    private function handleServiceResponse(string $service): void
     {
         $split = explode(PHP_EOL, $service);
+        $type = TypesInterface::TYPE_SYSTEMD;
 
         preg_match('/Id=(?<name>.*)/m', $service, $matches);
-        if (empty($matches)) {
-            $type = 'Systemd';
-        } else {
+
+        if (!empty($matches)) {
             $explode = explode('.', $matches['name']);
-            $type = ucfirst($explode[count($explode) - 1]);
+            $type = $explode[count($explode) - 1];
         }
 
-        $class = 'CyberLine\SystemdState\Types\\' . $type;
-        $class = new $class();
-
-        foreach ($split as $line) {
-            $explode = explode('=', $line);
-            if (empty($explode[0])) {
-                continue;
-            }
-
-            $class->{'set' . $explode[0]}(Parser::parseValueByContent($explode));
+        if (!in_array($type, TypesInterface::ALLOWED_TYPES)) {
+            throw new \RuntimeException(sprintf('Type `%s` is not a valid / known type.', $type));
         }
 
-        $this->reports[$class->getId()] = $class;
+        $className = __NAMESPACE__ . '\\Types\\' . ucfirst($type);
+        /** @var AbstractType $class */
+        $type = new $className();
+
+        array_walk($split, [$this, 'handleLine'], $type);
+        $this->reports[$type->getId()] = $type;
+    }
+
+    /**
+     * @param string $line
+     * @param int $key
+     * @param TypesInterface $type
+     */
+    private function handleLine(string $line, int $key, TypesInterface $type): void
+    {
+        $explode = explode('=', $line);
+        $propertyName = $explode[0];
+
+        if (empty($propertyName)) {
+            return;
+        }
+
+        if (!property_exists($type, $propertyName)) {
+            throw new \RuntimeException(
+                sprintf(
+                    'Property `%s` is not known to me. Please fill a Bug report!' . PHP_EOL . 'Info: `%s`',
+                    $propertyName,
+                    $line
+                )
+            );
+        }
+
+        $type->{'set' . $propertyName}(Parser::parseValueByContent($explode));
     }
 }

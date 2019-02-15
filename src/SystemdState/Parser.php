@@ -103,14 +103,13 @@ class Parser
         }
 
         $explode = array_map('trim', explode(';', $matches['command']));
-
-        foreach ($explode as $item) {
-            $split = explode(' ', $item);
+        array_walk($explode, function (string $value, int $key, ExecCommand $execCommand) {
+            $split = explode(' ', $value);
             $array = self::parseExecDetail($split);
             if (count($array)) {
                 $execCommand->{$array[0]} = $array[1];
             }
-        }
+        }, $execCommand);
 
         return $execCommand;
     }
@@ -121,14 +120,16 @@ class Parser
      */
     private static function parseExecDetail(array $values): array
     {
-        if (in_array($values[0], ['path', 'pid', 'code', 'status'])) {
+        $index = $values[0];
+
+        if (in_array($index, ['path', 'pid', 'code', 'status'])) {
             return [
-                $values[0],
+                $index,
                 self::parseValueByContent($values)
             ];
         }
 
-        if ($values[0] === 'argv[]') {
+        if ($index === 'argv[]') {
             array_shift($values);
             array_shift($values);
             return [
@@ -137,21 +138,21 @@ class Parser
             ];
         }
 
-        if ($values[0] === 'start_time') {
+        if ($index === 'start_time') {
             return [
                 'startTime',
                 $values[1]
             ];
         }
 
-        if ($values[0] === 'stop_time') {
+        if ($index === 'stop_time') {
             return [
                 'stopTime',
                 $values[1]
             ];
         }
 
-        if ($values[0] === 'ignore_errors') {
+        if ($index === 'ignore_errors') {
             return [
                 'ignoreErrors',
                 self::parseValueByContent($values)

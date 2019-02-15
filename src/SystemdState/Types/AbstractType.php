@@ -2,7 +2,7 @@
 
 namespace CyberLine\SystemdState\Types;
 
-abstract class AbstractType implements \JsonSerializable
+abstract class AbstractType implements TypesInterface, \JsonSerializable
 {
     /** @var \DateTimeImmutable */
     protected $ActiveEnterTimestamp;

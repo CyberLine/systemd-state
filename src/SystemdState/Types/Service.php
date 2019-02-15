@@ -112,6 +112,8 @@ class Service extends AbstractType
 
     protected $InactiveEnterTimestamp;
 
+    protected $Job;
+
     protected $KillMode;
 
     protected $KillSignal;
@@ -1343,6 +1345,24 @@ class Service extends AbstractType
     public function setInactiveEnterTimestamp($InactiveEnterTimestamp)
     {
         $this->InactiveEnterTimestamp = $InactiveEnterTimestamp;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJob()
+    {
+        return $this->Job;
+    }
+
+    /**
+     * @param mixed $Job
+     * @return Service
+     */
+    public function setJob($Job)
+    {
+        $this->Job = $Job;
         return $this;
     }
 

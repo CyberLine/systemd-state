@@ -2,7 +2,7 @@
 
 namespace CyberLine\SystemdState\Types;
 
-class Systemd implements \JsonSerializable
+class Systemd implements TypesInterface, \JsonSerializable
 {
     /** @var string */
     protected $Architecture;
