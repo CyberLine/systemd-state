@@ -84,6 +84,23 @@ class SystemdState
         throw new \RangeException(sprintf('No report found for `%s`. Maybe misspelled?', $unitName));
     }
 
+    /**
+     * @param String $string
+     * @return SystemdState
+     */
+    public function checkFromString(String $string): self
+    {
+        $explode = explode(PHP_EOL . PHP_EOL, $string);
+
+        if (count($explode) < 1 || strlen($string) === 0) {
+            throw new \InvalidArgumentException('Invalid payload passed to ' . __FUNCTION__);
+        }
+
+        array_walk($explode, [$this, 'handleServiceResponse']);
+
+        return $this;
+    }
+
     private function checkState(): void
     {
         if (!count($this->services)) {
@@ -97,8 +114,7 @@ class SystemdState
             throw new \RuntimeException(sprintf('There was an error executing the command: `%s`', $command));
         }
 
-        $explode = explode(PHP_EOL . PHP_EOL, $exec);
-        array_walk($explode, [$this, 'handleServiceResponse']);
+        $this->checkFromString($exec);
     }
 
     /**

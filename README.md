@@ -2,7 +2,6 @@
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CyberLine/systemd-state/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CyberLine/systemd-state/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/CyberLine/systemd-state/badges/build.png?b=master)](https://scrutinizer-ci.com/g/CyberLine/systemd-state/build-status/master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d420bf25-1fdc-4685-9cf4-c9b9b5fa5ca7/mini.png)](https://insight.sensiolabs.com/projects/d420bf25-1fdc-4685-9cf4-c9b9b5fa5ca7)
 [![Latest Stable Version](https://poser.pugx.org/cyberline/systemd-state/v/stable.svg)](https://packagist.org/packages/cyberline/systemd-state)
 [![Total Downloads](https://poser.pugx.org/cyberline/systemd-state/downloads.svg)](https://packagist.org/packages/cyberline/systemd-state)
 [![Latest Unstable Version](https://poser.pugx.org/cyberline/systemd-state/v/unstable.svg)](https://packagist.org/packages/cyberline/systemd-state)
@@ -31,6 +30,14 @@ $systemdState
     ->addCheckUnit('nginx');
     ->addCheckUnit('redis');
 $info = $systemdState->getReport();
+...
+
+# get info from pregenerated file
+# /bin/systemctl show * --no-pager > systemd.txt
+$systemdState = new SystemdState;
+$info = $systemdState
+    ->checkFromString(file_get_contents('systemd.txt'))
+    ->getReport();
 ...
 
 # get info about all services:
