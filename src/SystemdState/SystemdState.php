@@ -68,20 +68,7 @@ class SystemdState
             return [$this->reports[$unitName]];
         }
 
-        $retval = [];
-        foreach (TypesInterface::ALLOWED_TYPES as $suffix) {
-            $tempName = $unitName . '.' . $suffix;
-            if (array_key_exists($tempName, $this->reports)) {
-                $retval[$tempName] = $this->reports[$tempName];
-                // Don't break here, as we can have the same unit in different types (e.g. service and timer)
-            }
-        }
-
-        if (count($retval)) {
-            return $retval;
-        }
-
-        throw new \RangeException(sprintf('No report found for `%s`. Maybe misspelled?', $unitName));
+        return $this->getReportsByTypeMultiple($unitName);
     }
 
     /**
@@ -159,5 +146,27 @@ class SystemdState
         }
 
         $type->{'set' . $propertyName}(Parser::parseValueByContent($explode));
+    }
+
+    /**
+     * @param string $unitName
+     * @return array
+     */
+    private function getReportsByTypeMultiple(string $unitName): array
+    {
+        $retval = [];
+        foreach (TypesInterface::ALLOWED_TYPES as $suffix) {
+            $tempName = $unitName . '.' . $suffix;
+            if (array_key_exists($tempName, $this->reports)) {
+                $retval[$tempName] = $this->reports[$tempName];
+                // Don't break here, as we can have the same unit in different types (e.g. service and timer)
+            }
+        }
+
+        if (count($retval)) {
+            return $retval;
+        }
+
+        throw new \RangeException(sprintf('No report found for `%s`. Maybe misspelled?', $unitName));
     }
 }

@@ -149,40 +149,26 @@ class Parser
         $index = $values[0];
 
         if (in_array($index, ['path', 'pid', 'code', 'status'])) {
-            return [
-                $index,
-                self::parseValueByContent($values)
-            ];
+            return [$index, self::parseValueByContent($values)];
         }
 
         if ($index === 'argv[]') {
             array_shift($values);
             array_shift($values);
-            return [
-                'argv',
-                implode(' ', $values),
-            ];
+
+            return ['argv', implode(' ', $values),];
         }
 
         if ($index === 'start_time') {
-            return [
-                'startTime',
-                $values[1]
-            ];
+            return ['startTime', $values[1]];
         }
 
         if ($index === 'stop_time') {
-            return [
-                'stopTime',
-                $values[1]
-            ];
+            return ['stopTime', $values[1]];
         }
 
         if ($index === 'ignore_errors') {
-            return [
-                'ignoreErrors',
-                self::parseValueByContent($values)
-            ];
+            return ['ignoreErrors', self::parseValueByContent($values)];
         }
 
         return [];
