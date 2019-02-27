@@ -15,12 +15,13 @@ build:
             tests:
                 override:
                     - php-scrutinizer-run
-    tests:
-        override:
-            - command: 'phpunit --coverage-clover=clover.xml'
-              coverage:
-                file: 'clover.xml'
-                format: 'clover'
+        coverage:
+            tests:
+                override:
+                    - command: 'vendor/bin/phpunit --coverage-clover=clover.xml'
+                      coverage:
+                          file: 'clover.xml'
+                          format: clover
 
 tools:
     php_code_sniffer:

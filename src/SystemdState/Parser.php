@@ -49,8 +49,51 @@ class Parser
         }
 
         $key = $values[0];
-        $value = $values[1];
 
+        if (null !== ($value = self::checkByKey($key, $values))) {
+            return $value;
+        }
+
+        if (null !== ($value = self::checkByValue($values[1]))) {
+            return $value;
+        }
+
+        return $values[1];
+    }
+
+    /**
+     * @param string $key
+     * @param array $values
+     * @return array|ExecCommand|\DateTimeImmutable|null
+     */
+    private static function checkByKey(string $key, array $values)
+    {
+        if ($key === 'Environment') {
+            return self::parseEnvironmentLine($values);
+        }
+
+        if (in_array($key, self::$execTypes)) {
+            array_shift($values);
+            return self::parseExecLine(implode(' ', $values));
+        }
+
+        if (preg_match('/Timestamp$/', $key)) {
+            return \date_create_immutable_from_format('* Y-m-d H:i:s e', $values[1]);
+        }
+
+        if (in_array($key, self::$arrayTypes)) {
+            return explode(' ', $values[1]);
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $value
+     * @return bool|int|null
+     */
+    private static function checkByValue(string $value)
+    {
         if ($value === '0') {
             return 0;
         }
@@ -63,28 +106,11 @@ class Parser
             return false;
         }
 
-        if ($key === 'Environment') {
-            return self::parseEnvironmentLine($values);
-        }
-
-        if (in_array($key, self::$execTypes)) {
-            array_shift($values);
-            return self::parseExecLine(implode(' ', $values));
-        }
-
-        if (preg_match('/Timestamp$/', $key)) {
-            return \date_create_immutable_from_format('* Y-m-d H:i:s e', $value);
-        }
-
-        if (in_array($key, self::$arrayTypes)) {
-            return explode(' ', $value);
-        }
-
         if (preg_match('/^[1-9][0-9]*$/', $value) && $value < PHP_INT_MAX) {
             return (int)$value;
         }
 
-        return $value;
+        return null;
     }
 
     /**
@@ -123,40 +149,26 @@ class Parser
         $index = $values[0];
 
         if (in_array($index, ['path', 'pid', 'code', 'status'])) {
-            return [
-                $index,
-                self::parseValueByContent($values)
-            ];
+            return [$index, self::parseValueByContent($values)];
         }
 
         if ($index === 'argv[]') {
             array_shift($values);
             array_shift($values);
-            return [
-                'argv',
-                implode(' ', $values),
-            ];
+
+            return ['argv', implode(' ', $values),];
         }
 
         if ($index === 'start_time') {
-            return [
-                'startTime',
-                $values[1]
-            ];
+            return ['startTime', $values[1]];
         }
 
         if ($index === 'stop_time') {
-            return [
-                'stopTime',
-                $values[1]
-            ];
+            return ['stopTime', $values[1]];
         }
 
         if ($index === 'ignore_errors') {
-            return [
-                'ignoreErrors',
-                self::parseValueByContent($values)
-            ];
+            return ['ignoreErrors', self::parseValueByContent($values)];
         }
 
         return [];
