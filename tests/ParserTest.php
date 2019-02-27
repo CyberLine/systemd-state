@@ -1,5 +1,6 @@
 <?php
 
+use CyberLine\SystemdState\Model\ExecCommand;
 use CyberLine\SystemdState\Parser;
 
 class ParserTest extends \PHPUnit\Framework\TestCase
@@ -11,8 +12,10 @@ class ParserTest extends \PHPUnit\Framework\TestCase
     public function dpParseValueByContent()
     {
         $dateTime = \date_create_immutable_from_format('* Y-m-d H:i:s e', time());
+        $execCommand = new ExecCommand;
 
         $testCases = [
+            [['test'], null],
             [['test', 'yes'], true],
             [['test', 'no'], false],
             [['test', '0'], 0],
@@ -22,6 +25,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
             [['test', '18446744073709551615'], '18446744073709551615'],
             [['Timestamp', (string)$dateTime], $dateTime],
             [['Environment', 'FOO=bar BAZ=foo'], ['FOO' => 'bar', 'BAZ' => 'foo']],
+            [['ExecStart', ''], $execCommand]
         ];
 
         // To cover codecoverage

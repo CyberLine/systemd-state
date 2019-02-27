@@ -1,6 +1,7 @@
 # systemd-state
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CyberLine/systemd-state/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CyberLine/systemd-state/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/CyberLine/systemd-state/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/CyberLine/systemd-state/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/CyberLine/systemd-state/badges/build.png?b=master)](https://scrutinizer-ci.com/g/CyberLine/systemd-state/build-status/master)
 [![Latest Stable Version](https://poser.pugx.org/cyberline/systemd-state/v/stable.svg)](https://packagist.org/packages/cyberline/systemd-state)
 [![Total Downloads](https://poser.pugx.org/cyberline/systemd-state/downloads.svg)](https://packagist.org/packages/cyberline/systemd-state)

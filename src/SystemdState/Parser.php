@@ -195,6 +195,7 @@ class Parser
      * Used by PHPUnit
      *
      * @return array
+     * @codeCoverageIgnore
      */
     public static function getArrayTypes(): array
     {
@@ -205,6 +206,7 @@ class Parser
      * Used by PHPUnit
      *
      * @return array
+     * @codeCoverageIgnore
      */
     public static function getExecTypes(): array
     {
