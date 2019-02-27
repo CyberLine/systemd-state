@@ -138,7 +138,7 @@ class SystemdState
      */
     private function handleLine(string $line, int $key, TypesInterface $type): void
     {
-        $explode = explode('=', $line);
+        $explode = explode('=', $line, 2);
         $propertyName = $explode[0];
 
         if (empty($propertyName)) {

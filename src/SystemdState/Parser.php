@@ -130,7 +130,7 @@ class Parser
 
         $explode = array_map('trim', explode(';', $matches['command']));
         array_walk($explode, function (string $value, int $key, ExecCommand $execCommand) {
-            $split = explode(' ', $value);
+            $split = explode('=', $value);
             $array = self::parseExecDetail($split);
             if (count($array)) {
                 $execCommand->{$array[0]} = $array[1];
@@ -153,10 +153,10 @@ class Parser
         }
 
         if ($index === 'argv[]') {
-            array_shift($values);
-            array_shift($values);
+            $explode = explode(' ', $values[1]);
+            array_shift($explode);
 
-            return ['argv', implode(' ', $values),];
+            return ['argv', implode(' ', $explode),];
         }
 
         if ($index === 'start_time') {
