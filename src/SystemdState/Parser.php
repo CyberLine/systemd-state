@@ -49,8 +49,51 @@ class Parser
         }
 
         $key = $values[0];
-        $value = $values[1];
 
+        if (null !== ($value = self::checkByKey($key, $values))) {
+            return $value;
+        }
+
+        if (null !== ($value = self::checkByValue($values[1]))) {
+            return $value;
+        }
+
+        return $values[1];
+    }
+
+    /**
+     * @param string $key
+     * @param array $values
+     * @return array|ExecCommand|\DateTimeImmutable|null
+     */
+    private static function checkByKey(string $key, array $values)
+    {
+        if ($key === 'Environment') {
+            return self::parseEnvironmentLine($values);
+        }
+
+        if (in_array($key, self::$execTypes)) {
+            array_shift($values);
+            return self::parseExecLine(implode(' ', $values));
+        }
+
+        if (preg_match('/Timestamp$/', $key)) {
+            return \date_create_immutable_from_format('* Y-m-d H:i:s e', $values[1]);
+        }
+
+        if (in_array($key, self::$arrayTypes)) {
+            return explode(' ', $values[1]);
+        }
+
+        return null;
+    }
+
+    /**
+     * @param string $value
+     * @return bool|int|null
+     */
+    private static function checkByValue(string $value)
+    {
         if ($value === '0') {
             return 0;
         }
@@ -63,28 +106,11 @@ class Parser
             return false;
         }
 
-        if ($key === 'Environment') {
-            return self::parseEnvironmentLine($values);
-        }
-
-        if (in_array($key, self::$execTypes)) {
-            array_shift($values);
-            return self::parseExecLine(implode(' ', $values));
-        }
-
-        if (preg_match('/Timestamp$/', $key)) {
-            return \date_create_immutable_from_format('* Y-m-d H:i:s e', $value);
-        }
-
-        if (in_array($key, self::$arrayTypes)) {
-            return explode(' ', $value);
-        }
-
         if (preg_match('/^[1-9][0-9]*$/', $value) && $value < PHP_INT_MAX) {
             return (int)$value;
         }
 
-        return $value;
+        return null;
     }
 
     /**
