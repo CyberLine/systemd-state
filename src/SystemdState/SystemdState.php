@@ -158,16 +158,6 @@ class SystemdState
             return;
         }
 
-        if (!property_exists($type, $propertyName)) {
-            throw new \RuntimeException(
-                sprintf(
-                    'Property `%s` is not known to me. Please fill a Bug report!' . PHP_EOL . 'Info: `%s`',
-                    $propertyName,
-                    $line
-                )
-            );
-        }
-
         $type->{'set' . $propertyName}(Parser::parseValueByContent($explode));
     }
 }
