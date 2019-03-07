@@ -133,6 +133,11 @@ abstract class AbstractType implements TypesInterface, \JsonSerializable
     /** @var boolean */
     protected $Transient;
 
+    /**
+     * @param $name
+     * @param $value
+     * @return $this
+     */
     public function __call($name, $value)
     {
         $action = substr($name, 0, 3);
@@ -157,9 +162,11 @@ abstract class AbstractType implements TypesInterface, \JsonSerializable
         if ($action === 'get') {
             return $this->{$property};
         }
+
+        throw new \InvalidArgumentException('invalid call to ' . __METHOD__);
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->Id;
     }

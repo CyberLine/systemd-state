@@ -9,7 +9,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      * Dataprovider for Parser
      * @return array
      */
-    public function dpParseValueByContent()
+    public function dpParseValueByContent(): array
     {
         $dateTime = \date_create_immutable_from_format('* Y-m-d H:i:s e', time());
         $execCommand = new ExecCommand;
@@ -52,7 +52,7 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      * @param $data
      * @param $expected
      */
-    public function testParseValueByContent($data, $expected)
+    public function testParseValueByContent($data, $expected): void
     {
         $this->assertEquals($expected, Parser::parseValueByContent($data));
     }

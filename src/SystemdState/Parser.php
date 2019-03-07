@@ -72,7 +72,7 @@ class Parser
             return self::parseEnvironmentLine($values);
         }
 
-        if (in_array($key, self::$execTypes)) {
+        if (in_array($key, self::$execTypes, true)) {
             array_shift($values);
             return self::parseExecLine(implode(' ', $values));
         }
@@ -81,7 +81,7 @@ class Parser
             return \date_create_immutable_from_format('* Y-m-d H:i:s e', $values[1]);
         }
 
-        if (in_array($key, self::$arrayTypes)) {
+        if (in_array($key, self::$arrayTypes, true)) {
             return explode(' ', $values[1]);
         }
 
@@ -106,7 +106,7 @@ class Parser
             return false;
         }
 
-        if (preg_match('/^[1-9][0-9]*$/', $value) && $value < PHP_INT_MAX) {
+        if ($value < PHP_INT_MAX && preg_match('/^[1-9]\d*$/', $value)) {
             return (int)$value;
         }
 
@@ -119,8 +119,7 @@ class Parser
      */
     private static function parseExecLine(string $line): ExecCommand
     {
-        $pattern = "/^{[ ](?<command>.*)[ ]}$/";
-        preg_match($pattern, $line, $matches);
+        preg_match('/^{[ ](?<command>.*)[ ]}$/', $line, $matches);
 
         $execCommand = new ExecCommand;
         if (!array_key_exists('command', $matches)) {

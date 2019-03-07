@@ -4,7 +4,7 @@ use CyberLine\SystemdState\SystemdState;
 
 class SystemdStateTest extends \PHPUnit\Framework\TestCase
 {
-    public function testGetReportException1()
+    public function testGetReportException1(): void
     {
         $this->expectExceptionObject(new InvalidArgumentException('You have to add at least one unit to check!'));
 
@@ -12,7 +12,7 @@ class SystemdStateTest extends \PHPUnit\Framework\TestCase
         $systemdState->getReport();
     }
 
-    public function testGetReportException2()
+    public function testGetReportException2(): void
     {
         $this->expectExceptionObject(new RangeException('No report found for `baz`. Maybe misspelled?'));
 

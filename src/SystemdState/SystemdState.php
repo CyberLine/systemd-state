@@ -43,7 +43,7 @@ class SystemdState
     /**
      * @return array
      */
-    public function getSystemdInfo()
+    public function getSystemdInfo(): array
     {
         $this->addCheckUnit('');
 
@@ -79,7 +79,7 @@ class SystemdState
     {
         $explode = explode(PHP_EOL . PHP_EOL, $string);
 
-        if (count($explode) < 1 || strlen($string) === 0) {
+        if ($string === '' || count($explode) < 1) {
             throw new \InvalidArgumentException('Invalid payload passed to ' . __FUNCTION__);
         }
 
@@ -119,7 +119,7 @@ class SystemdState
             $type = $explode[count($explode) - 1];
         }
 
-        if (!in_array($type, TypesInterface::ALLOWED_TYPES)) {
+        if (!in_array($type, TypesInterface::ALLOWED_TYPES, true)) {
             throw new \RuntimeException(sprintf('Type `%s` is not a valid / known type.', $type));
         }
 
